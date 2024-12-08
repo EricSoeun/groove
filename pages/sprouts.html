@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Days+One&family=Poppins:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- TAILWINDCSS CONFIG -->
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    sm: "640px",
+                    md: "768px",
+                    lg: "960px",
+                    xl: "1100px",
+                },
+                extend: {
+                    height: {
+                        navbar: "4.5rem",
+                        page: "calc(100vh - 4.5rem)"
+                    },
+                    width: {
+                        sidebar: "246px",
+                        page: "calc(100vw - 246px)"
+                    },
+                    fontFamily: {
+                        primary: ['Days One', 'sans-serif'],
+                        secondary: ['Poppins', 'sans-serif'],
+                    },
+                    fontSize: {
+                        xxs: ['10px', '15px'],
+                        xs: ['12px', '18px'],
+                        sm: ['14px', '21px'],
+                        base: ['16px', '24px'],
+                        md: ['18px', '27px'],
+                        mb_lg: ['21px', '31.5px'],
+                        lg: ['24px', '36px']
+                    },
+                    colors: {
+                        accent: {
+                            DEFAULT: "#398167",
+                            hover: "#3981661a"
+                        },
+                        primary: {
+                            DEFAULT: '#181E1D',
+                            sub: '#666666'
+                        },
+                        secondary: {
+                            DEFAULT: '#BABABA',
+                            label: "#000000"
+                        },
+                        danger: '#FF8356',
+                        background: '#F8F7F6',
+                        lightBackground: '#EDF4F1',
+                        iconBackgroundAlt: '#F9F9F9',
+                    },
+                    boxShadow: {
+                        'inner-stroke': 'inset 0px 0px 0px 1px #F0F0F0',
+                    },
+                },
+            },
+        }
+    </script>
+    <title>Collector</title>
+    <!-- GENERAL STYLE -->
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-background">
+    <!-- NAVBAR -->
+    <header>
+        <nav
+            class="flex items-center justify-between px-4 md:px-12 h-navbar w-full sticky top-0 bg-white rounded-b-2xl ">
+            <img src="../public/icons/logo.svg" alt="GROOVE">
+            <h1 class="hidden md:block uppercase font-primary text-primary text-lg">Collector</h1>
+            <div class="flex gap-2">
+                <button class="flex items-center justify-center size-10 relative rounded-lg bg-background">
+                    <img src="../public/icons/notification-bing.svg" alt="Notification" />
+                    <div
+                        class="flex items-center justify-center absolute -right-[2px] -top-[2px] z-10 size-4 bg-accent text-white rounded-full">
+                        <span class="text-xs font-poppins">2</span>
+                    </div>
+                </button>
+                <button class="flex items-center justify-center md:hidden size-10 bg-background rounded-lg">
+                    <img src="../public/icons/menu.svg" alt="Menu">
+                </button>
+            </div>
+        </nav>
+    </header>
+    <!-- NAVBAR -->
+
+    <!-- //===============================================// -->
+
+    <!-- PAGE CONTENT -->
+    <main class="flex h-page px-4 pt-[10px] pb-4 md:p-6">
+        <!-- SIDEBAR -->
+
+        <aside class="bg-white sticky p-4 top-0 h-full rounded-2xl">
+            <!-- SIDEBAR CONTROLLER -->
+            <input type="checkbox" id="sidebar-toggle" class="hidden peer" checked />
+
+            <p class="uppercase font-secondary text-xs text-[#BABABA] font-medium">MENU</p>
+            <div class="h-4"></div>
+            <nav class=" transition-all duration-300 w-9 peer-checked:w-[calc(246px-32px)] overflow-hidden">
+                <ul role="list" aria-labelledby="menu" class="flex flex-col gap-3">
+
+                    <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
+                        <a href="../index.html" class="flex gap-2 px-2 py-3 cursor-pointer">
+                            <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                                src="../public/icons/book-hover.svg" alt="Book Hover" />
+                            <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+                                src="../public/icons/book.svg" alt="Book" />
+                    
+                            <p class="font-secondary capitalize">Collector</p>
+                        </a>
+                    </li>
+
+                    <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
+                        <a href="./seeds.html" class="flex gap-2 px-2 py-3 cursor-pointer">
+                            <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                                src="../public/icons/book-open-hover.svg" alt="Book open Hover" />
+                            <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+                                src="../public/icons/book-open.svg" alt="Book open" />
+
+                            <p class="font-secondary capitalize">Seeds</p>
+                        </a>
+                    </li>
+
+                    <li class="rounded-lg transition-all text-accent bg-accent-hover" aria-current="page">
+                        <a class="flex gap-2 px-2 py-3 cursor-pointer">
+                            <img class="" src="../public/icons/bookmark-hover.svg" alt="Bookmark active Icon" />
+                            <p class="font-secondary capitalize">Sprouts</p>
+                        </a>
+                    </li>
+
+                    <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
+                        <a href="./pages/blooms.html" class="flex gap-2 px-2 py-3 cursor-pointer">
+                            <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                                src="../public/icons/message-text-hover.svg" alt="Message text Hover" />
+                            <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+                                src="../public/icons/message-text.svg" alt="Message text" />
+
+                            <p class="font-secondary capitalize">Blooms</p>
+                        </a>
+                    </li>
+
+                    <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
+                        <a href="../pages/pollinators.html" class="flex gap-2 px-2 py-3 cursor-pointer">
+                            <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                                src="../public/icons/people-hover.svg" alt="People Hover" />
+                            <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+                                src="../public/icons/people.svg" alt="People" />
+
+                            <p class="font-secondary capitalize">Pollinators</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- TOGGLE BUTTON -->
+            <label for="sidebar-toggle" class="absolute top-4 -right-4 cursor-pointer size-6">
+                <img class="object-cover" src="../public/icons/arrow-circle-left.svg" alt="Arrow Left Icon">
+            </label>
+        </aside>
+
+        <!-- SIDEBAR -->
+
+        <!-- CONTENT -->
+
+        <div class="flex-1 h-full bg-blue-200 ml-6 rounded-2xl transition-all duration-300 peer-checked:ml-64">
+            <h1 class="text-xl">Main Content Area</h1>
+            <p>When the sidebar is collapsed, this area takes over the space.</p>
+        </div>
+    </main>
+    <!-- PAGE CONTENT -->
+</body>
+</html>

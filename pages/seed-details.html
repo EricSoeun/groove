@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Days+One&family=Poppins:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- TAILWINDCSS CONFIG -->
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    sm: "640px",
+                    md: "768px",
+                    lg: "960px",
+                    xl: "1100px",
+                },
+                extend: {
+                    height: {
+                        navbar: "4.5rem",
+                        page: "calc(100vh - 4.5rem)",
+                        sidebarH: "calc(100vh - 4.5rem - 3rem)",
+                    },
+                    width: {
+                        sidebar: "246px",
+                        page: "calc(100vw - 246px)"
+                    },
+                    fontFamily: {
+                        primary: ['Days One', 'sans-serif'],
+                        secondary: ['Poppins', 'sans-serif'],
+                    },
+                    fontSize: {
+                        xxs: ['10px', '15px'],
+                        xs: ['12px', '18px'],
+                        sm: ['14px', '21px'],
+                        base: ['16px', '24px'],
+                        md: ['18px', '27px'],
+                        mb_lg: ['21px', '31.5px'],
+                        lg: ['24px', '36px']
+                    },
+                    colors: {
+                        accent: {
+                            DEFAULT: "#398167",
+                            hover: "#3981661a"
+                        },
+                        primary: {
+                            DEFAULT: '#181E1D',
+                            sub: '#666666'
+                        },
+                        secondary: {
+                            DEFAULT: '#BABABA',
+                            label: "#000000"
+                        },
+                        danger: '#FF8356',
+                        background: '#F8F7F6',
+                        lightBackground: '#EDF4F1',
+                        iconBackgroundAlt: '#F9F9F9',
+                    },
+                    boxShadow: {
+                        'inner-stroke': 'inset 0px 0px 0px 1px #F0F0F0',
+                    },
+                },
+            },
+            function({ addVariant }) {
+                addVariant('has-w-9', '&:has(.w-9)');
+            },
+        }
+    </script>
+    <title>Seed Details</title>
+    <!-- GENERAL STYLE -->
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            cursor: pointer;
+        }
+
+        nav:has(.w-9) .avatar-section {
+            display: none;
+            /* Equivalent to Tailwind's `hidden` */
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-background">
+    <header class="sticky top-0 z-10  rounded-b-2xl shadow-inner-stroke shadow-[#FAFAFA] bg-white">
+        <nav class="flex items-center justify-between px-4 md:px-12 h-navbar w-full">
+            <a href="../index.html">
+                <img src="../public/icons/navigation/logo.svg" alt="GROOVE">
+            </a>
+            <h1 class="hidden lg:block uppercase font-primary text-primary text-lg">Seeds</h1>
+            <div class="flex gap-2">
+                <button class="flex items-center justify-center size-10 relative rounded-lg bg-background">
+                    <img src="../public/icons/button/notification-bing.svg" alt="Notification" />
+                    <div
+                        class="flex items-center justify-center absolute -right-[2px] -top-[2px] z-10 size-4 bg-accent text-white rounded-full">
+                        <span class="text-xs font-poppins">2</span>
+                    </div>
+                </button>
+                <button class="flex items-center justify-center lg:hidden size-10 bg-background rounded-lg">
+                    <img src="../public/icons/navigation/menu.svg" alt="Menu">
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- //===============================================// -->
+
+    <main class="flex px-4 pt-[10px] pb-4 md:p-6 relative">
+        <!-- SIDEBAR -->
+        <aside class="hidden lg:flex flex-col sticky z-10 p-4 top-24 h-sidebarH bg-white rounded-2xl">
+            <!-- SIDEBAR CONTROLLER -->
+            <input type="checkbox" id="sidebar-toggle" class="hidden peer" checked />
+            <label for="sidebar-toggle"
+                class="absolute top-12 -right-3 cursor-pointer size-6 bg-accent rounded-full transform transition-transform duration-500 ease-in-out peer-checked:rotate-180">
+                <img class="object-cover" src="../public/icons/button/arrow-right.svg" alt="Expand Arrow Icon">
+            </label>
+
+            <nav
+                class="flex-1 transition-all duration-300 h-full w-9 peer-checked:w-[calc(246px-32px)] overflow-hidden">
+                <h3 class="uppercase font-secondary text-xs text-[#BABABA] font-medium mb-4">MENU</h3>
+                <ul ul role="list" aria-labelledby="menu" class="flex-1 flex flex-col gap-3">
+                    <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
+                        <a href="../index.html" class="flex gap-2 px-2 py-3 cursor-pointer">
+                            <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                                src="../public/icons/navigation/book-active.svg" alt="Book Active" />
+                            <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+                                src="../public/icons/navigation/book.svg" alt="Book" />
+
+                            <p class="font-secondary capitalize">Collector</p>
+                        </a>
+                    </li>
+
+                    <li class="rounded-lg transition-all text-accent bg-accent-hover" aria-current="page">
+                        <a class="flex gap-2 px-2 py-3 cursor-pointer">
+                            <img class="" src="../public/icons/navigation/book-open-active.svg"
+                                alt="Opened Book active Icon" />
+                            <p class="font-secondary capitalize">Seeds</p>
+                        </a>
+                    </li>
+
+                    <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
+                        <a href="./pages/sprouts.html" class="flex gap-2 px-2 py-3 cursor-pointer">
+                            <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                                src="../public/icons/navigation/bookmark-active.svg" alt="Bookmark Active" />
+                            <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+                                src="../public/icons/navigation/bookmark.svg" alt="Bookmark" />
+
+                            <p class="font-secondary capitalize">Sprouts</p>
+                        </a>
+                    </li>
+
+                    <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
+                        <a href="./pages/blooms.html" class="flex gap-2 px-2 py-3 cursor-pointer">
+                            <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                                src="../public/icons/navigation/message-text-active.svg" alt="Message text Active" />
+                            <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+                                src="../public/icons/navigation/message-text.svg" alt="Message text" />
+
+                            <p class="font-secondary capitalize">Blooms</p>
+                        </a>
+                    </li>
+                    <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
+                        <a href="./pages/blooms.html" class="flex gap-2 px-2 py-3 cursor-pointer">
+                            <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                                src="../public/icons/navigation/people-active.svg" alt="People Active" />
+                            <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+                                src="../public/icons/navigation/people.svg" alt="People" />
+
+                            <p class="font-secondary capitalize">Pollinators</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div
+                class="w-9 opacity-0 peer-checked:opacity-100 peer-checked:w-[calc(246px-32px)] transition-all duration-200 p-3 bg-[#EDF4F1] rounded-xl overflow-hidden">
+                <div class="flex justify-between transition-all">
+                    <div class="flex-shrink-0 flex items-center gap-2">
+                        <div class="size-10">
+                            <img src="../public/images/avatar.png" alt="Avatar">
+                        </div>
+                        <p class="capitalize text-sm font-medium">Carter Dorwart</p>
+                    </div>
+                    <button class="justify-end transition-all">
+                        <img src="../public/icons/button/more.svg" alt="More">
+                    </button>
+                </div>
+            </div>
+            <div
+                class="absolute  bottom-7 peer-checked:hidden block w-9 text-center cursor-pointer transition-all duration-500 rounded-full bg-accent-hover">
+                <p class="font-secondary text-primary text-lg">C</p>
+            </div>
+        </aside>
+
+        <!-- CONTENT -->
+
+        <div class="flex-1 transition-all duration-300 lg:ml-6 peer-checked:ml-64 w-full">
+            <header>
+                <h1 class="lg:hidden uppercase font-primary text-mb_lg text-primary mb-4">Seeds</h1>
+            </header>
+
+            <section class="flex flex-col gap-6 px-2 py-6 lg:px-6 h-fit w-full rounded-2xl bg-white">
+                <a href="./seeds.html" class="flex gap-2 items-center">
+                    <img src="../public/icons/button/arrow-left.svg" alt="Arrow Left Icon">
+                    <p class="font-secondary text-secondary">Back to Seeds</p>
+                </a>
+                <section class="flex gap-6 w-full">
+                    <div class="xl:size-[423px]">
+                        <img class="rounded-[6px]" src="../public/images/preview_1.png" alt="Preview">
+                    </div>
+                    <div class="flex-1">
+                        <header class="flex flex-col gap-4">
+                            <h1 class="font-primary text-primary text-mb_lg lg:text-lg">Eco-Design Principles: <br />A
+                                Beginner’s Guide.</h1>
+
+                            <div class="flex justify-between">
+                                <div class="flex gap-2">
+                                    <div class="size-6">
+                                        <img src="../public/images/avatar_2.png" alt="">
+                                    </div>
+                                    <p class="font-secondary text-primary-sub text-xs">John Doe.</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <img src="../public/icons/calendar.svg" alt="Calendar">
+                                    <span class="font-secondary text-primary-sub text-xs">Nov 15, 2024</span>
+                                </div>
+                            </div>
+                            <ul class="flex gap-2 font-secondary text-primary-sub text-sm">
+                                <li
+                                    class="flex-shrink-0 flex items-center gap-2 px-4 py-1 shadow-inner-stroke shadow-[#F0F0F0] rounded-full">
+                                    <span>Sustainability</span>
+                                </li>
+                                <li
+                                    class="flex-shrink-0 flex items-center gap-2 px-4 py-1 shadow-inner-stroke shadow-[#F0F0F0] rounded-full">
+                                    <span>Learning</span>
+                                </li>
+                                <li
+                                    class="flex-shrink-0 flex items-center gap-2 px-4 py-1 shadow-inner-stroke shadow-[#F0F0F0] rounded-full">
+                                    <span>Environment</span>
+                                </li>
+                            </ul>
+                        </header>
+                        
+                        <div>
+
+                        </div>
+                    </div>
+
+
+                </section>
+            </section>
+
+            <div class="h-4 lg:h-5"></div>
+
+            <!-- GRID -->
+            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-full">
+                <article class="p-3 h-fit bg-white rounded-xl">
+                    <div class="flex items-center justify-center w-full h-[200px]">
+                        <img class="w-full h-full object-cover " src="../public/images/card_1.png" alt="Cover">
+                    </div>
+                    <div class="mt-3"></div>
+                    <div>
+                        <h2 class="font-secondary font-medium text-base text-primary mb-2">The Soil of Sustainable Ideas
+                        </h2>
+                        <p class="font-secondary text-secondary text-sm">
+                            A guide to sustainable practices.
+                        </p>
+                    </div>
+                    <div class="my-2 border-t border-[#F9F9F9]"></div>
+
+                    <div class="flex justify-between">
+                        <div
+                            class="flex-shrink-0 flex items-center gap-2 px-1 py-[2px] bg-accent-hover rounded-full font-secondary text-xs text-accent">
+                            <span>Growth</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <img src="../public/icons/calendar.svg" alt="Calendar">
+                            <span class="font-secondary text-primary-sub text-xs">23 Nov. 2024</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="p-3 h-fit  bg-white rounded-xl">
+                    <div class="flex items-center justify-center w-full h-[200px]">
+                        <img class="w-full h-full object-cover rounded-[6px]" src="../public/images/card_2.png"
+                            alt="Cover">
+                    </div>
+                    <div class="mt-3"></div>
+                    <div>
+                        <h2 class="font-secondary font-medium text-base text-primary mb-2">The Soil of Sustainable Ideas
+                        </h2>
+                        <p class="font-secondary text-secondary text-sm">
+                            A guide to sustainable practices.
+                        </p>
+                    </div>
+                    <div class="my-2 border-t border-[#F9F9F9]"></div>
+
+                    <div class="flex justify-between">
+                        <div
+                            class="flex-shrink-0 flex items-center gap-2 px-1 py-[2px] bg-accent-hover rounded-full font-secondary text-xs text-accent">
+                            <span>Growth</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <img src="../public/icons/calendar.svg" alt="Calendar">
+                            <span class="font-secondary text-primary-sub text-xs">23 Nov. 2024</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="p-3 h-fit  bg-white rounded-xl">
+                    <div class="flex items-center justify-center w-full h-[200px]">
+                        <img class="w-full h-full object-cover rounded-[6px]" src="../public/images/card_3.png"
+                            alt="Cover">
+                    </div>
+                    <div class="mt-3"></div>
+                    <div>
+                        <h2 class="font-secondary font-medium text-base text-primary mb-2">The Soil of Sustainable Ideas
+                        </h2>
+                        <p class="font-secondary text-secondary text-sm">
+                            A guide to sustainable practices.
+                        </p>
+                    </div>
+                    <div class="my-2 border-t border-[#F9F9F9]"></div>
+
+                    <div class="flex justify-between">
+                        <div
+                            class="flex-shrink-0 flex items-center gap-2 px-1 py-[2px] bg-accent-hover rounded-full font-secondary text-xs text-accent">
+                            <span>Growth</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <img src="../public/icons/calendar.svg" alt="Calendar">
+                            <span class="font-secondary text-primary-sub text-xs">23 Nov. 2024</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="p-3 h-fit  bg-white rounded-xl">
+                    <div class="flex items-center justify-center w-full h-[200px]">
+                        <img class="w-full h-full object-cover rounded-[6px]" src="../public/images/card_4.png"
+                            alt="Cover">
+                    </div>
+                    <div class="mt-3"></div>
+                    <div>
+                        <h2 class="font-secondary font-medium text-base text-primary mb-2">The Soil of Sustainable Ideas
+                        </h2>
+                        <p class="font-secondary text-secondary text-sm">
+                            A guide to sustainable practices.
+                        </p>
+                    </div>
+                    <div class="my-2 border-t border-[#F9F9F9]"></div>
+
+                    <div class="flex justify-between">
+                        <div
+                            class="flex-shrink-0 flex items-center gap-2 px-1 py-[2px] bg-accent-hover rounded-full font-secondary text-xs text-accent">
+                            <span>Growth</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <img src="../public/icons/calendar.svg" alt="Calendar">
+                            <span class="font-secondary text-primary-sub text-xs">23 Nov. 2024</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="p-3 h-fit  bg-white rounded-xl">
+                    <div class="flex items-center justify-center w-full h-[200px]">
+                        <img class="w-full h-full object-cover rounded-[6px]" src="../public/images/card_5.png"
+                            alt="Cover">
+                    </div>
+                    <div class="mt-3"></div>
+                    <div>
+                        <h2 class="font-secondary font-medium text-base text-primary mb-2">The Soil of Sustainable Ideas
+                        </h2>
+                        <p class="font-secondary text-secondary text-sm">
+                            A guide to sustainable practices.
+                        </p>
+                    </div>
+                    <div class="my-2 border-t border-[#F9F9F9]"></div>
+
+                    <div class="flex justify-between">
+                        <div
+                            class="flex-shrink-0 flex items-center gap-2 px-1 py-[2px] bg-accent-hover rounded-full font-secondary text-xs text-accent">
+                            <span>Growth</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <img src="../public/icons/calendar.svg" alt="Calendar">
+                            <span class="font-secondary text-primary-sub text-xs">23 Nov. 2024</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="p-3 h-fit  bg-white rounded-xl">
+                    <div class="flex items-center justify-center w-full h-[200px]">
+                        <img class="w-full h-full object-cover rounded-[6px]" src="../public/images/card_6.png"
+                            alt="Cover">
+                    </div>
+                    <div class="mt-3"></div>
+                    <div>
+                        <h2 class="font-secondary font-medium text-base text-primary mb-2">The Soil of Sustainable Ideas
+                        </h2>
+                        <p class="font-secondary text-secondary text-sm">
+                            A guide to sustainable practices.
+                        </p>
+                    </div>
+                    <div class="my-2 border-t border-[#F9F9F9]"></div>
+
+                    <div class="flex justify-between">
+                        <div
+                            class="flex-shrink-0 flex items-center gap-2 px-1 py-[2px] bg-accent-hover rounded-full font-secondary text-xs text-accent">
+                            <span>Growth</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <img src="../public/icons/calendar.svg" alt="Calendar">
+                            <span class="font-secondary text-primary-sub text-xs">23 Nov. 2024</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="p-3 h-fit  bg-white rounded-xl">
+                    <div class="flex items-center justify-center w-full h-[200px]">
+                        <img class="w-full h-full object-cover rounded-[6px]" src="../public/images/card_7.png"
+                            alt="Cover">
+                    </div>
+                    <div class="mt-3"></div>
+                    <div>
+                        <h2 class="font-secondary font-medium text-base text-primary mb-2">The Soil of Sustainable Ideas
+                        </h2>
+                        <p class="font-secondary text-secondary text-sm">
+                            A guide to sustainable practices.
+                        </p>
+                    </div>
+                    <div class="my-2 border-t border-[#F9F9F9]"></div>
+
+                    <div class="flex justify-between">
+                        <div
+                            class="flex-shrink-0 flex items-center gap-2 px-1 py-[2px] bg-accent-hover rounded-full font-secondary text-xs text-accent">
+                            <span>Growth</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <img src="../public/icons/calendar.svg" alt="Calendar">
+                            <span class="font-secondary text-primary-sub text-xs">23 Nov. 2024</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="p-3 h-fit  bg-white rounded-xl">
+                    <div class="flex items-center justify-center w-full h-[200px]">
+                        <img class="w-full h-full object-cover rounded-[6px]" src="../public/images/card_8.png"
+                            alt="Cover">
+                    </div>
+                    <div class="mt-3"></div>
+                    <div>
+                        <h2 class="font-secondary font-medium text-base text-primary mb-2">The Soil of Sustainable Ideas
+                        </h2>
+                        <p class="font-secondary text-secondary text-sm">
+                            A guide to sustainable practices.
+                        </p>
+                    </div>
+                    <div class="my-2 border-t border-[#F9F9F9]"></div>
+
+                    <div class="flex justify-between">
+                        <div
+                            class="flex-shrink-0 flex items-center gap-2 px-1 py-[2px] bg-accent-hover rounded-full font-secondary text-xs text-accent">
+                            <span>Growth</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <img src="../public/icons/calendar.svg" alt="Calendar">
+                            <span class="font-secondary text-primary-sub text-xs">23 Nov. 2024</span>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

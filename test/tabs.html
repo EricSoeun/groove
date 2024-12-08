@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -96,7 +95,7 @@
             border-radius: 20px;
             background-color: #FFF;
             overflow: hidden;
-                        padding: 16px;
+            padding: 16px;
         }
 
         /* Tab buttons */
@@ -163,93 +162,36 @@
             display: block;
         }
     </style>
+    <title>Document</title>
 </head>
-
 <body>
-    <div>
 
-        <input class="hidden" type="radio" id="tab1" name="tabs" checked>
-        <input class="hidden" type="radio" id="tab2" name="tabs">
-
-        <div class="tabs-container">
-            <label for="tab1">Tab 1</label>
-            <label for="tab2">Tab 2</label>
+    <div class="h-20 bg-white w-[240px] p-2 rounded-full relative">
+    
+        <input type="radio" id="tab-one" name="tabs" class="peer/tab-one hidden" checked>
+        <input type="radio" id="tab-two" name="tabs" class="peer/tab-two hidden">
+    
+        <!-- MOVING BG -->
+        <div
+            class="h-[80%] w-[50%]  rounded-full absolute z-10 left-0 peer-checked/tab-one:translate-x-0 peer-checked/tab-two:translate-x-full transition-transform duration-300">
         </div>
-
-        <div class="content-wrapper">
-            <div class="tab-content" id="content1">
-                <p>This is content for Tab 1.</p>
-            </div>
-            <div class="tab-content" id="content2">
-                <p>This is content for Tab 2.</p>
-            </div>
+    
+        <!-- CONTROLLER -->
+        <label for="tab-one"
+            class="h-[80%] w-[50%] absolute z-20 bg-[#3981661A] left-0 text-center flex items-center justify-center cursor-pointer">
+            Timeline
+        </label>
+        <label for="tab-two"
+            class="h-[80%] w-[50%] absolute z-20 right-0 text-center flex items-center justify-center cursor-pointer">
+            Queued
+        </label>
+        <div class=" bg-amber-200 hidden peer-checked/tab-one:block p-4 w-full absolute -bottom-[80px]">
+            First tab pane
+        </div>
+        <div class="bg-amber-200 hidden peer-checked/tab-two:block p-4 w-full absolute -bottom-[80px]">
+            Second tab pane
         </div>
     </div>
 
-    <div class="flex justify-center">
-        <!--  uses radio buttons -->
-        <section class="flex flex-row flex-wrap m-8">
-    
-            <input id="tab-one" type="radio" name="tabs" class="peer/tab-one opacity-0 absolute" checked />
-            <label for="tab-one"
-                class="bg-slate-300 hover:bg-slate-200 peer-checked/tab-one:bg-amber-200 cursor-default p-4 rounded-t-lg block">
-                One
-            </label>
-    
-            <input id="tab-two" type="radio" name="tabs" class="peer/tab-two opacity-0 absolute" />
-            <label for="tab-two"
-                class="bg-slate-300 hover:bg-slate-200 peer-checked/tab-two:bg-amber-200 cursor-default p-4 rounded-t-lg block">
-                Two
-            </label>
-    
-            <input id="tab-three" type="radio" name="tabs" class="peer/tab-three opacity-0 absolute" />
-            <label for="tab-three"
-                class="bg-slate-300 hover:bg-slate-200 peer-checked/tab-three:bg-amber-200 cursor-default p-4 rounded-t-lg block">
-                Three
-            </label>
-    
-            <div class="basis-full h-0"></div>
-    
-            <div class="bg-amber-200 hidden peer-checked/tab-one:block p-4 w-full">
-                First tab pane
-            </div>
-            <div class="bg-amber-200 hidden peer-checked/tab-two:block p-4 w-full">
-                Second tab pane
-            </div>
-            <div class="bg-amber-200 hidden peer-checked/tab-three:block p-4 w-full">
-                Third tab pane
-            </div>
-    
-        </section>
-    
-        <!--  uses :focus which will hide the tab whenever the user clicks anywhere else on the page :( -->
-        <ul class="flex relative m-8">
-            <li>
-                <a href="#one"
-                    class="bg-slate-300 hover:bg-slate-200 focus:bg-amber-200 cursor-default p-4 rounded-t-lg block peer">One</a>
-                <div class="bg-amber-200 hidden absolute left-0 right-0 peer-focus:block p-4">
-                    First tab pane
-                </div>
-            </li>
-            <li>
-                <a href="#two"
-                    class="bg-slate-300 hover:bg-slate-200 focus:bg-amber-200 cursor-default p-4 rounded-t-lg block peer">Two</a>
-                <div class="bg-amber-200 hidden absolute left-0 right-0 peer-focus:block p-4">
-                    Second tab pane
-                </div>
-            </li>
-            <li>
-                <a href="#three"
-                    class="bg-slate-300 hover:bg-slate-200 focus:bg-amber-200 cursor-default p-4 rounded-t-lg block peer">Three</a>
-                <div class="bg-amber-200 hidden absolute left-0 right-0 peer-focus:block p-4">
-                    Third tab pane
-                </div>
-            </li>
-        </ul>
-    </div>
 </body>
-
-</html> 
-
-
-
+</html>

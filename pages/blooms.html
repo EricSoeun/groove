@@ -1,83 +1,524 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Days+One&family=Poppins:wght@400;500&display=swap"
-            rel="stylesheet">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <!-- TAILWINDCSS CONFIG -->
-        <script>
-            tailwind.config = {
-                theme: {
-                    screens: {
-                        sm: "640px",
-                        md: "768px",
-                        lg: "960px",
-                        xl: "1100px",
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Days+One&family=Poppins:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- TAILWINDCSS CONFIG -->
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    sm: "640px",
+                    md: "768px",
+                    lg: "960px",
+                    xl: "1280px"
+                },
+                extend: {
+                    height: {
+                        navbar: "4.5rem",
+                        page: "calc(100vh - 4.5rem)",
+                        sidebarH: "calc(100vh - 4.5rem - 3rem)",
                     },
-                    extend: {
-                        height: {
-                            navbar: "4.5rem",
-                            page: "calc(100vh - 4.5rem)"
+                    width: {
+                        sidebar: "246px",
+                        page: "calc(100vw - 246px)"
+                    },
+                    fontFamily: {
+                        primary: ['Days One', 'sans-serif'],
+                        secondary: ['Poppins', 'sans-serif'],
+                    },
+                    fontSize: {
+                        xxs: ['10px', '15px'],
+                        xs: ['12px', '18px'],
+                        sm: ['14px', '21px'],
+                        base: ['16px', '24px'],
+                        md: ['18px', '27px'],
+                        mb_lg: ['21px', '31.5px'],
+                        lg: ['24px', '36px']
+                    },
+                    colors: {
+                        accent: {
+                            DEFAULT: "#398167",
+                            hover: "#3981661a"
                         },
-                        width: {
-                            sidebar: "246px",
-                            page: "calc(100vw - 246px)"
+                        primary: {
+                            DEFAULT: '#181E1D',
+                            sub: '#666666'
                         },
-                        fontFamily: {
-                            primary: ['Days One', 'sans-serif'],
-                            secondary: ['Poppins', 'sans-serif'],
+                        secondary: {
+                            DEFAULT: '#BABABA',
+                            label: "#000000"
                         },
-                        fontSize: {
-                            xxs: ['10px', '15px'],
-                            xs: ['12px', '18px'],
-                            sm: ['14px', '21px'],
-                            base: ['16px', '24px'],
-                            md: ['18px', '27px'],
-                            mb_lg: ['21px', '31.5px'],
-                            lg: ['24px', '36px']
-                        },
-                        colors: {
-                            accent: {
-                                DEFAULT: "#398167",
-                                hover: "#3981661a"
-                            },
-                            primary: {
-                                DEFAULT: '#181E1D',
-                                sub: '#666666'
-                            },
-                            secondary: {
-                                DEFAULT: '#BABABA',
-                                label: "#000000"
-                            },
-                            danger: '#FF8356',
-                            background: '#F8F7F6',
-                            lightBackground: '#EDF4F1',
-                            iconBackgroundAlt: '#F9F9F9',
-                        },
-                        boxShadow: {
-                            'inner-stroke': 'inset 0px 0px 0px 1px #F0F0F0',
-                        },
+                        danger: '#FF8356',
+                        background: '#F8F7F6',
+                        lightBackground: '#EDF4F1',
+                        iconBackgroundAlt: '#F9F9F9',
+                    },
+                    boxShadow: {
+                        'inner-stroke': 'inset 0px 0px 0px 1px #F0F0F0',
                     },
                 },
-            }
-        </script>
-        <title>Blooms</title>
-        <!-- GENERAL STYLE -->
-        <style>
-            *,
-            *::before,
-            *::after {
-                box-sizing: border-box;
-                padding: 0;
-                margin: 0;
-            }
-        </style>
+            },
+            function({ addVariant }) {
+                addVariant('has-w-9', '&:has(.w-9)');
+            },
+        }
+    </script>
+    <title>Blooms</title>
+    <!-- GENERAL STYLE -->
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            overscroll-behavior: none;
+        }
+
+        a {
+            cursor: pointer;
+        }
+    </style>
 </head>
-<body>
-    
+
+<body class="min-h-screen bg-background">
+    <header class="sticky top-0 z-20 w-full rounded-b-2xl shadow-inner-stroke shadow-[#FAFAFA] bg-white">
+        <nav class="flex items-center justify-between px-4 md:px-12 h-navbar w-full">
+            <a href="../index.html">
+                <img src="../public/icons/navigation/logo.svg" alt="GROOVE">
+            </a>
+            <h1 class="hidden lg:block uppercase font-primary text-primary text-lg">Blooms</h1>
+            <div class="flex gap-2">
+                <button class="flex items-center justify-center size-10 relative rounded-lg bg-background">
+                    <img src="../public/icons/button/notification-bing.svg" alt="Notification" />
+                    <div
+                        class="flex items-center justify-center absolute -right-[2px] -top-[2px] z-10 size-4 bg-accent text-white rounded-full">
+                        <span class="text-xs font-poppins">2</span>
+                    </div>
+                </button>
+                <button class="flex items-center justify-center lg:hidden size-10 bg-background rounded-lg">
+                    <img src="../public/icons/navigation/menu.svg" alt="Menu">
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- //===============================================// -->
+
+    <main class="flex px-4 pt-[10px] pb-4 md:p-6 relative">
+        <!-- SIDEBAR -->
+        <aside class="hidden lg:flex flex-col sticky z-40 p-4 top-24 h-sidebarH bg-white rounded-2xl">
+            <!-- SIDEBAR CONTROLLER -->
+            <input type="checkbox" id="sidebar-toggle" class="hidden peer" checked />
+            <label for="sidebar-toggle"
+                class="absolute z-20 top-12 -right-3 cursor-pointer size-6 bg-accent rounded-full transform transition-transform duration-500 ease-in-out peer-checked:rotate-180">
+                <img class="object-cover" src="../public/icons/button/arrow-right.svg" alt="Expand Arrow Icon">
+            </label>
+            <nav
+                class="flex-1 transition-all duration-300 h-full w-9 peer-checked:w-[calc(246px-32px)] overflow-hidden">
+                <h3 class="uppercase font-secondary text-xs text-[#BABABA] font-medium mb-4">MENU</h3>
+                <ul ul role="list" aria-labelledby="menu" class="flex-1 flex flex-col gap-3">
+                    <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
+                        <a href="../index.html" class="flex gap-2 px-2 py-3 cursor-pointer">
+                            <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                                src="../public/icons/navigation/book-active.svg" alt="Book Active" />
+                            <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+                                src="../public/icons/navigation/book.svg" alt="Book" />
+
+                            <p class="font-secondary capitalize">Collector</p>
+                        </a>
+                    </li>
+
+                    <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
+                        <a href="./pages/seeds.html" class="flex gap-2 px-2 py-3 cursor-pointer">
+                            <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                                src="../public/icons/navigation/book-open-active.svg" alt="Opend Book Active" />
+                            <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+                                src="../public/icons/navigation/book-open.svg" alt="Opend Book" />
+
+                            <p class="font-secondary capitalize">Seeds</p>
+                        </a>
+                    </li>
+
+                    <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
+                        <a href="./pages/sprouts.html" class="flex gap-2 px-2 py-3 cursor-pointer">
+                            <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                                src="../public/icons/navigation/bookmark-active.svg" alt="Bookmark Active" />
+                            <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+                                src="../public/icons/navigation/bookmark.svg" alt="Bookmark" />
+
+                            <p class="font-secondary capitalize">Sprouts</p>
+                        </a>
+                    </li>
+
+                    <li class="rounded-lg transition-all text-accent bg-accent-hover" aria-current="page">
+                        <a class="flex gap-2 px-2 py-3 cursor-pointer">
+                            <img class="" src="../public/icons/navigation/message-text-active.svg"
+                                alt="Message text active Icon" />
+                            <p class="font-secondary capitalize">Blooms</p>
+                        </a>
+                    </li>
+
+                    <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
+                        <a href="./pages/blooms.html" class="flex gap-2 px-2 py-3 cursor-pointer">
+                            <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                                src="../public/icons/navigation/people-active.svg" alt="People Active" />
+                            <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+                                src="../public/icons/navigation/people.svg" alt="People" />
+
+                            <p class="font-secondary capitalize">Pollinators</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div
+                class="w-9 opacity-0 peer-checked:opacity-100 peer-checked:w-[calc(246px-32px)] transition-all duration-200 p-3 bg-[#EDF4F1] rounded-xl">
+                <div class="flex justify-between transition-all">
+                    <div class="flex-shrink-0 flex items-center gap-2">
+                        <div class="size-10">
+                            <img src="../public/images/avatar.png" alt="Avatar">
+                        </div>
+                        <p class="capitalize text-sm font-medium">Carter Dorwart</p>
+                    </div>
+                    <button class="justify-end transition-all">
+                        <img src="../public/icons/button/more.svg" alt="More">
+                    </button>
+                </div>
+            </div>
+            <div
+                class="absolute  bottom-7 peer-checked:hidden block w-9 text-center cursor-pointer transition-all duration-500 rounded-full bg-accent-hover">
+                <p class="font-secondary text-primary text-lg">C</p>
+            </div>
+        </aside>
+
+        <!-- CONTENT -->
+
+        <div class="flex-1 transition-all duration-300 lg:ml-6 peer-checked:ml-64 w-full">
+            <header>
+                <h1 class="lg:hidden uppercase font-primary text-mb_lg text-primary mb-4">Seeds</h1>
+            </header>
+
+            <section class="flex flex-col gap-6 w-full">
+                <header class="text-center">
+                    <h1 class="mb-2 font-primary text-mb_lg md:text-lg text-primary">See What’s Blooming
+                    </h1>
+                    <p class="font-secondary text-sm md:text-base text-primary-sub">Explore new and scheduled posts from
+                        the community.
+                    </p>
+                </header>
+
+
+                <!-- TABS -->
+
+                <div class="w-full relative">
+                    <!-- TAB TOGGLE -->
+                    <input type="radio" id="tab-one" name="tabs" class="peer/tab-one hidden" checked>
+                    <input type="radio" id="tab-two" name="tabs" class="peer/tab-two hidden">
+
+                    <!-- TAB BACKGROUND -->
+                    <div
+                        class="w-1/2 h-[72px] absolute z-0 top-0 left-1/2 transform -translate-x-1/2 bg-white rounded-full">
+                    </div>
+
+                    <!-- MOVING BG -->
+                    <div
+                        class="flex-1 h-[56px] w-[calc(25%+8px)] bg-accent-hover rounded-full absolute z-10 left-[calc(25%+8px)] top-2 
+                        peer-checked/tab-one:translate-x-0 peer-checked/tab-two:translate-x-[calc(100%-32px)] transition-transform duration-300">
+                    </div>
+
+                    <!-- TAB TIMELINE -->
+                    <label for="tab-one"
+                        class="absolute h-[56px] w-[calc(25%+8px)] left-[calc(25%+8px)] top-2 items-center justify-center rounded-full text-center peer-checked/tab-one:text-accent peer-checked/tab-one:font-bold text-primary-sub font-secondary cursor-pointer z-20 transition-all duration-200 ease-in flex">
+                        <p>
+                            Timeline
+                        </p>
+                    </label>
+
+                    <!-- TAB QUEUED -->
+                    <label for="tab-two"
+                        class="absolute h-[56px] w-[calc(25%+8px)] right-[calc(25%+8px)] top-2 items-center justify-center rounded-full text-center peer-checked/tab-two:text-accent peer-checked/tab-two:font-bold text-primary-sub font-secondary cursor-pointer z-20 transition-all duration-200 ease-in flex">
+                        <p>
+                            Queued
+                        </p>
+                    </label>
+
+                    <!-- TAB CONTENTS -->
+
+                    <div class="h-24"></div>
+                    <div class="hidden peer-checked/tab-one:block h-fit rounded-lg w-3/4 mx-auto">
+                        <div class="grid grid-cols-1 gap-4">
+
+                            <article class="p-2 h-fit bg-white outline outline-[#FAFAFA] rounded-xl">
+                                <div class="flex flex-col lg:flex-row  gap-2 md:gap-3 lg:gap-6">
+                                    <div class="flex items-center justify-center xl:w-[260px] h-[204px]">
+                                        <img class="w-full h-full object-cover rounded-[6px]"
+                                            src="../public/images/card_1.png" alt="Cover">
+                                    </div>
+                                    <div class="lg:flex-1 flex flex-col gap-2 md:gap-3 lg:py-2 xl:py-4">
+                                        <div class="flex-1">
+                                            <header
+                                                class="flex flex-col-reverse gap-2 lg:flex-col lg:gap-0 xl:flex-row xl:justify-between ">
+                                                <h2
+                                                    class="font-secondary font-medium text-base text-primary lg:mb-1 xl:mb-2">
+                                                    Rethinking
+                                                    Renewable
+                                                    Energy.
+                                                </h2>
+
+                                                <div class="flex items-center gap-2">
+                                                    <img src="../public/icons/calendar-light.svg" alt="Calendar">
+                                                    <span class="font-secondary text-secondary text-xs">Nov 15,
+                                                        2024</span>
+                                                </div>
+                                            </header>
+                                            <div class="h-2"></div>
+
+                                            <p class="font-secondary text-secondary text-xs lg:text-sm ">
+                                                This post explores practical methods for incorporating eco-friendly
+                                                materials into
+                                                urban projects, emphasizing
+                                                cost-efficiency and environmental impact
+                                            </p>
+                                        </div>
+
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-2 items-center">
+                                                <div class="size-8 rounded-full">
+                                                    <img class="h-full object-cover rounded-full"
+                                                        src="../public/images/avatar_2.png" alt="User">
+                                                </div>
+                                                <p class="font-secondary text-sm">Carter Dorwart</p>
+                                            </div>
+                                            <button
+                                                class="flex items-center gap-3 bg-accent-hover px-2 py-1 rounded-full">
+                                                <img src="../public/icons/button/like-active.svg"
+                                                    alt="Like Active Icon">
+                                                <span class="font-secondary text-accent text-xs">25 Likes</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="p-2 h-fit bg-white outline outline-[#FAFAFA] rounded-xl">
+                                <div class="flex flex-col lg:flex-row  gap-2 md:gap-3 lg:gap-6">
+                                    <div class="flex items-center justify-center xl:w-[260px] h-[204px]">
+                                        <img class="w-full h-full object-cover rounded-[6px]"
+                                            src="../public/images/card_9.png" alt="Cover">
+                                    </div>
+                                    <div class="lg:flex-1 flex flex-col gap-2 md:gap-3 lg:py-2 xl:py-4">
+                                        <div class="flex-1">
+                                            <header
+                                                class="flex flex-col-reverse gap-2 lg:flex-col lg:gap-0 xl:flex-row xl:justify-between ">
+                                                <h2
+                                                    class="font-secondary font-medium text-base text-primary lg:mb-1 xl:mb-2">
+                                                    Rethinking
+                                                    Renewable
+                                                    Energy.
+                                                </h2>
+
+                                                <div class="flex items-center gap-2">
+                                                    <img src="../public/icons/calendar-light.svg" alt="Calendar">
+                                                    <span class="font-secondary text-secondary text-xs">Nov 15,
+                                                        2024</span>
+                                                </div>
+                                            </header>
+                                            <div class="h-2"></div>
+
+                                            <p class="font-secondary text-secondary text-xs lg:text-sm ">
+                                                This post explores practical methods for incorporating eco-friendly
+                                                materials into
+                                                urban projects, emphasizing
+                                                cost-efficiency and environmental impact
+                                            </p>
+                                        </div>
+
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-2 items-center">
+                                                <div class="size-8 rounded-full">
+                                                    <img class="h-full object-cover rounded-full"
+                                                        src="../public/images/avatar_3.png" alt="User">
+                                                </div>
+                                                <p class="font-secondary text-sm">Carter Dorwart</p>
+                                            </div>
+                                            <button
+                                                class="flex items-center gap-3 outline outline-[#ECECEC] px-2 py-1 rounded-full">
+                                                <img src="../public/icons/button/like.svg" alt="Like Icon">
+                                                <span class="font-secondary text-primary-sub text-xs">24
+                                                    Likes</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="p-2 h-fit bg-white outline outline-[#FAFAFA] rounded-xl">
+                                <div class="flex flex-col lg:flex-row  gap-2 md:gap-3 lg:gap-6">
+                                    <div class="flex items-center justify-center xl:w-[260px] h-[204px]">
+                                        <img class="w-full h-full object-cover rounded-[6px]"
+                                            src="../public/images/card_2.png" alt="Cover">
+                                    </div>
+                                    <div class="lg:flex-1 flex flex-col gap-2 md:gap-3 lg:py-2 xl:py-4">
+                                        <div class="flex-1">
+                                            <header
+                                                class="flex flex-col-reverse gap-2 lg:flex-col lg:gap-0 xl:flex-row xl:justify-between ">
+                                                <h2
+                                                    class="font-secondary font-medium text-base text-primary lg:mb-1 xl:mb-2">
+                                                    Rethinking
+                                                    Renewable
+                                                    Energy.
+                                                </h2>
+
+                                                <div class="flex items-center gap-2">
+                                                    <img src="../public/icons/calendar-light.svg" alt="Calendar">
+                                                    <span class="font-secondary text-secondary text-xs">Nov 15,
+                                                        2024</span>
+                                                </div>
+                                            </header>
+                                            <div class="h-2"></div>
+
+                                            <p class="font-secondary text-secondary text-xs lg:text-sm ">
+                                                This post explores practical methods for incorporating eco-friendly
+                                                materials into
+                                                urban projects, emphasizing
+                                                cost-efficiency and environmental impact
+                                            </p>
+                                        </div>
+
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-2 items-center">
+                                                <div class="size-8 rounded-full">
+                                                    <img class="h-full object-cover rounded-full"
+                                                        src="../public/images/avatar_4.png" alt="User">
+                                                </div>
+                                                <p class="font-secondary text-sm">Carter Dorwart</p>
+                                            </div>
+                                            <button
+                                                class="flex items-center gap-3 outline outline-[#ECECEC] px-2 py-1 rounded-full">
+                                                <img src="../public/icons/button/like.svg" alt="Like Icon">
+                                                <span class="font-secondary text-primary-sub text-xs">24
+                                                    Likes</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="p-2 h-fit bg-white outline outline-[#FAFAFA] rounded-xl">
+                                <div class="flex flex-col lg:flex-row  gap-2 md:gap-3 lg:gap-6">
+                                    <div class="flex items-center justify-center xl:w-[260px] h-[204px]">
+                                        <img class="w-full h-full object-cover rounded-[6px]"
+                                            src="../public/images/card_5.png" alt="Cover">
+                                    </div>
+                                    <div class="lg:flex-1 flex flex-col gap-2 md:gap-3 lg:py-2 xl:py-4">
+                                        <div class="flex-1">
+                                            <header
+                                                class="flex flex-col-reverse gap-2 lg:flex-col lg:gap-0 xl:flex-row xl:justify-between ">
+                                                <h2
+                                                    class="font-secondary font-medium text-base text-primary lg:mb-1 xl:mb-2">
+                                                    Rethinking
+                                                    Renewable
+                                                    Energy.
+                                                </h2>
+
+                                                <div class="flex items-center gap-2">
+                                                    <img src="../public/icons/calendar-light.svg" alt="Calendar">
+                                                    <span class="font-secondary text-secondary text-xs">Nov 15,
+                                                        2024</span>
+                                                </div>
+                                            </header>
+                                            <div class="h-2"></div>
+
+                                            <p class="font-secondary text-secondary text-xs lg:text-sm ">
+                                                This post explores practical methods for incorporating eco-friendly
+                                                materials into
+                                                urban projects, emphasizing
+                                                cost-efficiency and environmental impact
+                                            </p>
+                                        </div>
+
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-2 items-center">
+                                                <div class="size-8 rounded-full">
+                                                    <img class="h-full object-cover rounded-full"
+                                                        src="../public/images/avatar_2.png" alt="User">
+                                                </div>
+                                                <p class="font-secondary text-sm">Carter Dorwart</p>
+                                            </div>
+                                            <button
+                                                class="flex items-center gap-3 outline outline-[#ECECEC] px-2 py-1 rounded-full">
+                                                <img src="../public/icons/button/like.svg" alt="Like Icon">
+                                                <span class="font-secondary text-primary-sub text-xs">24
+                                                    Likes</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="hidden peer-checked/tab-two:block h-fit rounded-lg w-3/4 mx-auto">
+
+                        <article class="p-2 h-fit bg-white outline outline-[#FAFAFA] rounded-xl">
+                            <div class="flex flex-col lg:flex-row  gap-2 md:gap-3 lg:gap-6">
+                                <div class="flex items-center justify-center xl:w-[260px] h-[204px]">
+                                    <img class="w-full h-full object-cover rounded-[6px]"
+                                        src="../public/images/card_1.png" alt="Cover">
+                                </div>
+                                <div class="lg:flex-1 flex flex-col gap-2 md:gap-3 lg:py-2 xl:py-4">
+                                    <div class="flex-1">
+                                        <header
+                                            class="flex flex-col-reverse gap-2 lg:flex-col lg:gap-0 xl:flex-row xl:justify-between ">
+                                            <h2
+                                                class="font-secondary font-medium text-base text-primary lg:mb-1 xl:mb-2">
+                                                Rethinking
+                                                Renewable
+                                                Energy.
+                                            </h2>
+
+                                            <div class="flex items-center gap-2">
+                                                <img src="../public/icons/calendar-light.svg" alt="Calendar">
+                                                <span class="font-secondary text-secondary text-xs">Nov 15,
+                                                    2024</span>
+                                            </div>
+                                        </header>
+                                        <div class="h-2"></div>
+
+                                        <p class="font-secondary text-secondary text-xs lg:text-sm ">
+                                            This post explores practical methods for incorporating eco-friendly
+                                            materials into
+                                            urban projects, emphasizing
+                                            cost-efficiency and environmental impact
+                                        </p>
+                                    </div>
+
+                                    <div class="flex justify-between">
+                                        <div class="flex gap-2 items-center">
+                                            <div class="size-8 rounded-full">
+                                                <img class="h-full object-cover rounded-full"
+                                                    src="../public/images/avatar_2.png" alt="User">
+                                            </div>
+                                            <p class="font-secondary text-sm">Carter Dorwart</p>
+                                        </div>
+                                        <button class="flex items-center gap-3 bg-accent-hover px-2 py-1 rounded-full">
+                                            <img src="../public/icons/button/like-active.svg" alt="Like Active Icon">
+                                            <span class="font-secondary text-accent text-xs">25 Likes</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
 </body>
 </html>

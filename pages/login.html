@@ -124,23 +124,23 @@
           <form class="space-y-6">
             <div>
               <label for="email" class="block text-base font-medium text-gray-700">Email</label>
-              <div class="mt-1 relative rounded-md shadow-sm">
+              <div class="mt-1 relative rounded-xl">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <img src="./../public/icons/sms.svg" alt="Email icon" class="h-5 w-5 text-gray-400">
                 </div>
                 <input type="email" id="email" name="email" placeholder="Enter your email" required
-                  class="block w-full pl-10 rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                  class="block w-full pl-10 rounded-xl border border-gray-300 px-3 py-4 focus:shadow-md focus:border-accent focus:outline-none focus:ring-inset focus:ring-accent">
               </div>
             </div>
 
             <div>
               <label for="password" class="block text-base font-medium text-gray-700">Password</label>
-              <div class="mt-1 relative rounded-md shadow-sm">
+              <div class="mt-1 relative rounded-xl">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <img src="./../public/icons/lock.svg" alt="Lock icon" class="h-5 w-5 text-gray-400">
                 </div>
                 <input type="password" id="password" name="password" placeholder="Enter your password" required
-                  class="block w-full pl-10 pr-10 rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                  class="block w-full pl-10 rounded-xl border border-gray-300 px-3 py-4 focus:shadow-md focus:border-accent focus:outline-none focus:ring-inset focus:ring-accent">
                 <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
                   onclick="togglePassword()">
                   <img src="./../public/icons/eye.svg" alt="Toggle password visibility" id="toggleIcon"
@@ -169,20 +169,20 @@
     </div>
   </div>
 
-<script>
-  function togglePassword() {
-    const passwordInput = document.getElementById('password');
-    const toggleIcon = document.getElementById('toggleIcon');
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById('password');
+      const toggleIcon = document.getElementById('toggleIcon');
 
-    if (passwordInput.type === 'password') {
-      passwordInput.type = 'text';
-   toggleIcon.src = './../public/icons/eye-slash.svg' // Chemin vers l'icône œil barré
-    } else {
-      passwordInput.type = 'password';
-      toggleIcon.src = './../public/icons/eye.svg'; // Chemin vers l'icône œil
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.src = './../public/icons/eye-slash.svg' // Chemin vers l'icône œil barré
+      } else {
+        passwordInput.type = 'password';
+        toggleIcon.src = './../public/icons/eye.svg'; // Chemin vers l'icône œil
+      }
     }
-  }
-</script>
+  </script>
 </body>
 
 </html>

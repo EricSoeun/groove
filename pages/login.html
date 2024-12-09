@@ -98,47 +98,70 @@
 
   <div class="flex h-screen">
     <!-- Left Section -->
-    <div class="w-1/2 bg-gray-100 flex items-center justify-center p-8">
-      <div class="w-full bg-red-400 h-full overflow-hidden rounded-lg">
-        <img src="./../public/images/login-cover.png" alt="Placeholder" class="w-full ">
+    <div class="w-1/2  flex items-center justify-center p-6 ">
+      <div class="w-full h-full overflow-hidden rounded-2xl">
+        <img src="./../public/images/login-cover.png" alt="Placeholder" class="h-max min-w-full max-h-screen">
       </div>
 
     </div>
 
     <!-- Right Section -->
-    <div class="w-1/2 flex flex-col justify-between p-8">
+    <div class="w-1/2 flex flex-col justify-between p-16">
       <!-- Logo -->
       <div>
-        <img src="./../public/icons/navigation/logo.svg" alt="Logo" class="h-12">
+        <img src="./../public/icons/navigation/logo.svg" alt="Logo" class="w-[74px]">
       </div>
 
       <!-- Login Form -->
       <div class="flex-grow flex flex-col justify-center mx-auto w-full">
-        <h1 class="text-2xl font-bold mb-2">Welcome Back</h1>
-        <p class="text-gray-500 mb-6">Log in to your account</p>
-        <form action="#" class="space-y-4">
+        <div class="space-y-6">
           <div>
-            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-            <input type="email" id="email"
-              class="mt-1 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-              placeholder="you@example.com">
+            <h1 class="text-4xl font-primary  text-gray-900">Log in</h1>
+            <p class="mt-2 font-secondary text-base text-gray-600">Welcome to your soil of ideas. Let’s grow something
+              amazing.</p>
           </div>
-          <div>
-            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-            <input type="password" id="password"
-              class="mt-1 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-              placeholder="••••••••">
-          </div>
-          <div class="text-right">
-            <a href="#" class="text-sm text-blue-500 hover:underline">Forgot password?</a>
-          </div>
-          <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">
-            Login
-          </button>
-        </form>
-        <div class="text-center my-4">
-          <p class="text-gray-500">Don’t have an account?
-            <a href="#" class="text-blue-500 hover:underline">Sign Up</a>
+
+          <form class="space-y-6">
+            <div>
+              <label for="email" class="block text-base font-medium text-gray-700">Email</label>
+              <div class="mt-1 relative rounded-md shadow-sm">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <img src="./../public/icons/sms.svg" alt="Email icon" class="h-5 w-5 text-gray-400">
+                </div>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required
+                  class="block w-full pl-10 rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+              </div>
+            </div>
+
+            <div>
+              <label for="password" class="block text-base font-medium text-gray-700">Password</label>
+              <div class="mt-1 relative rounded-md shadow-sm">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <img src="./../public/icons/lock.svg" alt="Lock icon" class="h-5 w-5 text-gray-400">
+                </div>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required
+                  class="block w-full pl-10 pr-10 rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+                  onclick="togglePassword()">
+                  <img src="./../public/icons/eye.svg" alt="Toggle password visibility" id="toggleIcon"
+                    class="h-5 w-5 text-gray-400">
+                </button>
+              </div>
+            </div>
+
+            <div class="flex items-center">
+              <a href="#" class="text-base font-medium hover:text-indigo-500">Forgot password?</a>
+            </div>
+
+            <button type="submit"
+              class="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-full shadow-sm text-base font-medium text-white bg-accent hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Login
+            </button>
+          </form>
+
+          <p class="mt-4 text-center text-base text-gray-600">
+            Don't have an account?
+            <a href="#" class="font-medium text-accent hover:text-accent-hover">Sign up</a>
           </p>
         </div>
       </div>
@@ -146,7 +169,20 @@
     </div>
   </div>
 
+<script>
+  function togglePassword() {
+    const passwordInput = document.getElementById('password');
+    const toggleIcon = document.getElementById('toggleIcon');
 
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+   toggleIcon.src = './../public/icons/eye-slash.svg' // Chemin vers l'icône œil barré
+    } else {
+      passwordInput.type = 'password';
+      toggleIcon.src = './../public/icons/eye.svg'; // Chemin vers l'icône œil
+    }
+  }
+</script>
 </body>
 
 </html>

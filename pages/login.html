@@ -10,67 +10,68 @@
     rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- TAILWINDCSS CONFIG -->
-  <script>
-    tailwind.config = {
-      theme: {
-        screens: {
-          sm: "640px",
-          md: "768px",
-          lg: "960px",
-          xl: "1100px",
+    <script>
+      tailwind.config = {
+        theme: {
+          screens: {
+            sm: "640px",
+            md: "768px",
+            lg: "960px",
+            xl: "1100px",
+          },
+          extend: {
+            height: {
+              navbar: "4.5rem",
+              page: "calc(100vh - 4.5rem)",
+              sidebarH: "calc(100vh - 4.5rem - 3rem)",
+            },
+            width: {
+              sidebar: "246px",
+              page: "calc(100vw - 246px)"
+            },
+            fontFamily: {
+              primary: ['Days One', 'sans-serif'],
+              secondary: ['Poppins', 'sans-serif'],
+            },
+            fontSize: {
+              xxs: ['10px', '15px'],
+              xs: ['12px', '18px'],
+              sm: ['14px', '21px'],
+              base: ['16px', '24px'],
+              md: ['18px', '27px'],
+              mb_lg: ['21px', '31.5px'],
+              lg: ['24px', '36px']
+            },
+            colors: {
+              accent: {
+                DEFAULT: "#398167",
+                hover: "#3981661a",
+                dark: "#1C5F46"
+              },
+              primary: {
+                DEFAULT: '#181E1D',
+                sub: '#666666'
+              },
+              secondary: {
+                DEFAULT: '#BABABA',
+                label: "#000000"
+              },
+              danger: '#FF8356',
+              background: '#F8F7F6',
+              lightBackground: '#EDF4F1',
+              iconBackgroundAlt: '#F9F9F9',
+            },
+            boxShadow: {
+              'inner-stroke': 'inset 0px 0px 0px 1px #F0F0F0',
+            },
+          },
         },
-        extend: {
-          height: {
-            navbar: "4.5rem",
-            page: "calc(100vh - 4.5rem)",
-            sidebarH: "calc(100vh - 4.5rem - 3rem)",
-          },
-          width: {
-            sidebar: "246px",
-            page: "calc(100vw - 246px)"
-          },
-          fontFamily: {
-            primary: ['Days One', 'sans-serif'],
-            secondary: ['Poppins', 'sans-serif'],
-          },
-          fontSize: {
-            xxs: ['10px', '15px'],
-            xs: ['12px', '18px'],
-            sm: ['14px', '21px'],
-            base: ['16px', '24px'],
-            md: ['18px', '27px'],
-            mb_lg: ['21px', '31.5px'],
-            lg: ['24px', '36px']
-          },
-          colors: {
-            accent: {
-              DEFAULT: "#398167",
-              hover: "#3981661a"
-            },
-            primary: {
-              DEFAULT: '#181E1D',
-              sub: '#666666'
-            },
-            secondary: {
-              DEFAULT: '#BABABA',
-              label: "#000000"
-            },
-            danger: '#FF8356',
-            background: '#F8F7F6',
-            lightBackground: '#EDF4F1',
-            iconBackgroundAlt: '#F9F9F9',
-          },
-          boxShadow: {
-            'inner-stroke': 'inset 0px 0px 0px 1px #F0F0F0',
-          },
+        function({ addVariant }) {
+          addVariant('has-w-9', '&:has(.w-9)');
         },
-      },
-      function({ addVariant }) {
-        addVariant('has-w-9', '&:has(.w-9)');
-      },
-    }
-  </script>
-  <title>Collector</title>
+      }
+    </script>
+  <title>Login</title>
   <!-- GENERAL STYLE -->
   <style>
     *,
@@ -106,9 +107,9 @@
     </div>
 
     <!-- Right Section -->
-    <div class="w-full md:w-1/2 flex flex-col justify-between p-16">
+    <div class="w-full md:w-1/2 flex flex-col justify-between lg:p-16 sm:p-8 p-4 py-8 ">
       <!-- Logo -->
-      <div>
+      <div class="flex justify-center md:justify-start">
         <img src="./../public/icons/navigation/logo.svg" alt="Logo" class="w-[74px]">
       </div>
 
@@ -117,7 +118,8 @@
         <div class="space-y-6">
           <div class="text-center">
             <h1 class="text-4xl font-primary text-primary">Log in</h1>
-            <p class="mt-2 font-secondary text-sm md:text-base text-secondary">Welcome to your soil of ideas. Let’s grow something
+            <p class="mt-2 font-secondary text-sm md:text-base text-secondary">Welcome to your soil of ideas. Let’s grow
+              something
               amazing.</p>
           </div>
 
@@ -154,14 +156,14 @@
             </div>
 
             <button type="submit"
-              class="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-full shadow-sm text-base font-medium text-white bg-accent hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              class="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-full shadow-sm text-base font-medium text-white bg-accent  hover:bg-accent-dark ">
               Login
             </button>
           </form>
 
           <p class="mt-4 text-center text-base text-gray-600">
             Don't have an account?
-            <a href="#" class="font-medium text-accent hover:text-accent-hover">Sign up</a>
+            <a href="#" class="font-medium text-accent hover:text-accent-dark">Sign up</a>
           </p>
         </div>
       </div>

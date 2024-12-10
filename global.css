@@ -1,0 +1,14 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  overscroll-behavior: none;
+  -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+
+a {
+  cursor: pointer;
+}

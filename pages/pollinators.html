@@ -1,83 +1,781 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Days+One&family=Poppins:wght@400;500&display=swap"
-            rel="stylesheet">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <!-- TAILWINDCSS CONFIG -->
-        <script>
-            tailwind.config = {
-                theme: {
-                    screens: {
-                        sm: "640px",
-                        md: "768px",
-                        lg: "960px",
-                        xl: "1100px",
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/global.css">
+    <link href="https://fonts.googleapis.com/css2?family=Days+One&family=Poppins:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- TAILWINDCSS CONFIG -->
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    sm: "640px",
+                    md: "768px",
+                    lg: "960px",
+                    xl: "1280px"
+                },
+                extend: {
+                    height: {
+                        navbar: "4.5rem",
+                        page: "calc(100vh - 4.5rem)",
+                        sidebarH: "calc(100vh - 4.5rem - 3rem)",
                     },
-                    extend: {
-                        height: {
-                            navbar: "4.5rem",
-                            page: "calc(100vh - 4.5rem)"
+                    width: {
+                        sidebar: "246px",
+                        page: "calc(100vw - 246px)"
+                    },
+                    fontFamily: {
+                        primary: ['Days One', 'sans-serif'],
+                        secondary: ['Poppins', 'sans-serif'],
+                    },
+                    fontSize: {
+                        xxs: ['10px', '15px'],
+                        xs: ['12px', '18px'],
+                        sm: ['14px', '21px'],
+                        base: ['16px', '24px'],
+                        md: ['18px', '27px'],
+                        mb_lg: ['21px', '31.5px'],
+                        lg: ['24px', '36px']
+                    },
+                    colors: {
+                        accent: {
+                            DEFAULT: "#398167",
+                            hover: "#3981661a",
+                            dark: "#1C5F46"
                         },
-                        width: {
-                            sidebar: "246px",
-                            page: "calc(100vw - 246px)"
+                        primary: {
+                            DEFAULT: '#181E1D',
+                            sub: '#666666'
                         },
-                        fontFamily: {
-                            primary: ['Days One', 'sans-serif'],
-                            secondary: ['Poppins', 'sans-serif'],
+                        secondary: {
+                            DEFAULT: '#BABABA',
+                            label: "#000000"
                         },
-                        fontSize: {
-                            xxs: ['10px', '15px'],
-                            xs: ['12px', '18px'],
-                            sm: ['14px', '21px'],
-                            base: ['16px', '24px'],
-                            md: ['18px', '27px'],
-                            mb_lg: ['21px', '31.5px'],
-                            lg: ['24px', '36px']
-                        },
-                        colors: {
-                            accent: {
-                                DEFAULT: "#398167",
-                                hover: "#3981661a"
-                            },
-                            primary: {
-                                DEFAULT: '#181E1D',
-                                sub: '#666666'
-                            },
-                            secondary: {
-                                DEFAULT: '#BABABA',
-                                label: "#000000"
-                            },
-                            danger: '#FF8356',
-                            background: '#F8F7F6',
-                            lightBackground: '#EDF4F1',
-                            iconBackgroundAlt: '#F9F9F9',
-                        },
-                        boxShadow: {
-                            'inner-stroke': 'inset 0px 0px 0px 1px #F0F0F0',
-                        },
+                        danger: '#FF8356',
+                        background: '#F8F7F6',
+                        lightBackground: '#EDF4F1',
+                        iconBackgroundAlt: '#F9F9F9',
+                    },
+                    boxShadow: {
+                        'inner-stroke': 'inset 0px 0px 0px 1px #F0F0F0',
                     },
                 },
-            }
-        </script>
-        <title>Pollinators</title>
-        <!-- GENERAL STYLE -->
-        <style>
-            *,
-            *::before,
-            *::after {
-                box-sizing: border-box;
-                padding: 0;
-                margin: 0;
-            }
-        </style>
+            },
+            function({ addVariant }) {
+                addVariant('has-w-9', '&:has(.w-9)');
+            },
+        }
+    </script>
+    <title>Pollinators</title>
 </head>
-<body>
-    
+
+<body class="min-h-screen bg-background">
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-20 rounded-b-2xl outline outline-[#FAFAFA] bg-white">
+        <nav class="flex items-center justify-between px-4 md:px-12 h-navbar w-full">
+            <a href="../index.html">
+                <img src="../public/icons/navigation/logo.svg" class="h-4 md:h-full" alt="GROOVE LOGO">
+            </a>
+            <h1 class="hidden lg:block uppercase font-primary text-primary text-lg">Pollinators</h1>
+            <div class="flex gap-2">
+                <button class="flex items-center justify-center size-10 relative rounded-lg bg-background">
+                    <img src="../public/icons/button/notification-bing.svg" alt="Notification" />
+                    <div
+                        class="flex items-center justify-center absolute -right-[2px] -top-[2px] z-10 size-4 bg-accent text-white rounded-full">
+                        <span class="text-xs font-poppins">2</span>
+                    </div>
+                </button>
+                <button class="flex items-center justify-center lg:hidden size-10 bg-background rounded-lg">
+                    <label for="menu-toggle" class="w-full flex items-center justify-center">
+                        <img src="../public/icons/navigation/menu.svg" alt="Menu">
+                    </label>
+                </button>
+            </div>
+        </nav>
+
+        <!-- MOBILE NAVIGATION -->
+
+        <input type="checkbox" id="menu-toggle" class="hidden peer">
+        <!-- BLUR EFFECT -->
+        <div
+            class="fixed lg:hidden inset-0 bg-[#dddddd] bg-opacity-50 backdrop-blur-sm z-10 opacity-0 pointer-events-none peer-checked:opacity-100 peer-checked:pointer-events-auto transition-opacity">
+        </div>
+
+        <div
+            class="fixed bottom-0 left-0 w-full bg-white rounded-t-[24px] shadow-lg z-20 transform translate-y-full hidden peer-checked:block peer-checked:translate-y-0 transition-transform duration-300">
+            <div class="flex flex-col p-4">
+                <!-- CLOSE NAVIGATION -->
+                <label for="menu-toggle"
+                    class="cursor-grab border-t border-4 w-9 rounded-full border-gray-300 mx-auto"></label>
+                <div class="h-8"></div>
+                <nav>
+                    <h3 class="uppercase font-secondary text-xs text-[#BABABA] font-medium mb-4">MENU</h3>
+                    <ul ul role="list" aria-labelledby="menu" class="flex flex-col gap-3">
+                        <li class="rounded-lg text-secondary" aria-current="page">
+                            <a href="../index.html" class="flex gap-2 px-2 py-3">
+                                <img src="../public/icons/navigation/book.svg" alt="Book Icon" />
+                                <p class="font-secondary capitalize">Collector</p>
+                            </a>
+                        </li>
+                        <li class="rounded-lg text-secondary">
+                            <a href="./seeds.html" class="flex gap-2 px-2 py-3">
+                                <img src="../public/icons/navigation/book-open.svg" alt="Opend Book Icon" />
+                                <p class="font-secondary capitalize">Seeds</p>
+                            </a>
+                        </li>
+                        <li class="rounded-lg text-secondary">
+                            <a href="./sprouts.html" class="flex gap-2 px-2 py-3">
+                                <img src="../public/icons/navigation/bookmark.svg" alt="Bookmark Icon" />
+                                <p class="font-secondary capitalize">Sprouts</p>
+                            </a>
+                        </li>
+                        <li class="rounded-lg text-secondary">
+                            <a href="./blooms.html" class="flex gap-2 px-2 py-3">
+                                <img src="../public/icons/navigation/message-text.svg" alt="Message text Icon" />
+
+                                <p class="font-secondary capitalize">Blooms</p>
+                            </a>
+                        </li>
+                        <li class="rounded-lg  text-accent bg-accent-hover">
+                            <a class="flex gap-2 px-2 py-3">
+                                <img src="../public/icons/navigation/people-active.svg" alt="People Active Icon" />
+                                <p class="font-secondary capitalize">Pollinators</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="h-8"></div>
+                    <!-- USER MENU -->
+                    <div class="p-3 bg-[#EDF4F1] rounded-xl overflow-hidden">
+                        <div class="flex justify-between transition-all">
+                            <div class="flex-shrink-0 flex items-center gap-2">
+                                <div class="size-10">
+                                    <img src="../public/images/avatar.png" alt="Avatar">
+                                </div>
+                                <p class="capitalize text-sm font-medium">Carter Dorwart</p>
+                            </div>
+                            <button class="justify-end transition-all">
+                                <img src="../public/icons/button/more.svg" alt="More">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="h-6"></div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE -->
+
+    <main class="flex px-4 pt-[10px] pb-4 md:p-6 relative">
+
+        <!-- SIDEBAR -->
+        <aside class="hidden lg:flex flex-col sticky z-10 p-4 top-24 h-sidebarH bg-white rounded-2xl">
+            <!-- SIDEBAR CONTROLLER -->
+            <input type="checkbox" id="sidebar-toggle" class="hidden peer" checked />
+            <label for="sidebar-toggle"
+                class="absolute top-12 -right-3 cursor-pointer size-6 bg-accent hover:bg-accent-dark rounded-full transform transition-transform duration-500 ease-in-out peer-checked:rotate-180">
+                <img class="object-cover" src="../public/icons/button/arrow-right.svg" alt="Expand Arrow Icon">
+            </label>
+            <!-- SIDEBAR NAVIGATION -->
+            <nav
+                class="flex-1 transition-all duration-300 h-full w-9 peer-checked:w-[calc(246px-32px)] overflow-hidden">
+                <h3 class="uppercase font-secondary text-xs text-[#BABABA] font-medium mb-4">MENU</h3>
+                <ul ul role="list" aria-labelledby="menu" class="flex-1 flex flex-col gap-3">
+                    <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
+                        <a href="../index.html" class="flex gap-2 px-2 py-3 cursor-pointer">
+                            <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                                src="../public/icons/navigation/book-active.svg" alt="Book Active Icon" />
+                            <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+                                src="../public/icons/navigation/book.svg" alt="Book Icon" />
+
+                            <p class="font-secondary capitalize">Collector</p>
+                        </a>
+                    </li>
+
+                    <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
+                        <a href="./seeds.html" class="flex gap-2 px-2 py-3 cursor-pointer">
+                            <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                                src="../public/icons/navigation/book-open-active.svg" alt="Opend Book Active" />
+                            <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+                                src="../public/icons/navigation/book-open.svg" alt="Opend Book" />
+
+                            <p class="font-secondary capitalize">Seeds</p>
+                        </a>
+                    </li>
+
+                    <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
+                        <a href="./sprouts.html" class="flex gap-2 px-2 py-3 cursor-pointer">
+                            <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                                src="../public/icons/navigation/bookmark-active.svg" alt="Bookmark Active Icon" />
+                            <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+                                src="../public/icons/navigation/bookmark.svg" alt="Bookmark Icon" />
+
+                            <p class="font-secondary capitalize">Sprouts</p>
+                        </a>
+                    </li>
+
+                    <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
+                        <a href="./blooms.html" class="flex gap-2 px-2 py-3 cursor-pointer">
+                            <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                                src="../public/icons/navigation/message-text-active.svg"
+                                alt="Message text Active Icon" />
+                            <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+                                src="../public/icons/navigation/message-text.svg" alt="Message text Icon" />
+
+                            <p class="font-secondary capitalize">Blooms</p>
+                        </a>
+                    </li>
+                    <li class="rounded-lg transition-all text-accent bg-accent-hover" aria-current="page">
+                        <a class="flex gap-2 px-2 py-3 cursor-pointer">
+                            <img class="" src="../public/icons/navigation/people-active.svg" alt="People active Icon" />
+                            <p class="font-secondary capitalize">Pollinators</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+            <!-- USER MENU -->
+            <div
+                class="w-9 opacity-0 peer-checked:opacity-100 peer-checked:w-[calc(246px-32px)] transition-all duration-200 p-3 bg-[#EDF4F1] rounded-xl overflow-hidden">
+                <div class="flex justify-between transition-all">
+                    <div class="flex-shrink-0 flex items-center gap-2">
+                        <div class="size-10">
+                            <img src="../public/images/avatar.png" alt="Avatar">
+                        </div>
+                        <p class="capitalize text-sm font-medium">Carter Dorwart</p>
+                    </div>
+                    <button class="justify-end transition-all">
+                        <img src="../public/icons/button/more.svg" alt="More Icon">
+                    </button>
+                </div>
+            </div>
+            <div
+                class="absolute bottom-7 peer-checked:hidden block w-9 text-center cursor-pointer transition-all duration-500 rounded-full bg-accent-hover">
+                <p class="font-secondary text-primary text-lg">C</p>
+            </div>
+        </aside>
+
+        <!-- CONTENT -->
+        <div class="flex-1 transition-all duration-300 lg:ml-6 peer-checked:ml-64 w-full">
+
+            <header>
+                <h1 class="lg:hidden uppercase font-primary text-mb_lg text-primary mb-4">Pollinators</h1>
+            </header>
+
+            <!-- SEARCH AND SORT SECTION -->
+            <section class="px-2 py-6 lg:px-6 rounded-2xl bg-white">
+                <!-- SECTION HEADER -->
+                <header>
+                    <h1 class="mb-2 font-primary text-mb_lg md:text-lg text-primary">Find and Connect with Collaborators
+                    </h1>
+                    <p class="font-secondary text-sm md:text-base text-primary-sub">Search for profiles by tags or
+                        recent activity
+                    </p>
+                </header>
+
+                <div class="h-6"></div>
+
+                <!-- SEARCH -->
+                <section aria-labelledby="search-section" class="">
+                    <form action="" class="flex flex-col md:flex-row md:items-center gap-4">
+                        <div class="flex-1 flex gap-[10px] px-3 py-4 rounded-xl shadow-inner-stroke">
+                            <img src="../public/icons/search-normal.svg" alt="Search Icon">
+                            <input
+                                class="w-full border-none placeholder-secondary outline-none font-secondary focus:text-primary-sub text-sm md:text-base"
+                                type="text" name="" placeholder="Search by name or tags"
+                                aria-label="Search by name or tags" required />
+                        </div>
+                        <button
+                            class="w-full md:w-auto py-3 px-10 rounded-full bg-accent hover:bg-accent-dark transition-all duration-150 ease-in-out font-secondary font-medium text-sm md:text-base text-white"
+                            type="submit">
+                            Search
+                        </button>
+                    </form>
+                </section>
+
+                <div class="h-6"></div>
+                <!-- SORT -->
+                <section aria-labelledby="sort-section" class="flex flex-col md:flex-row gap-6">
+
+                    <div class="flex-shrink-0 flex flex-col gap-3 font-secondary text-sm text-primary-sub relative">
+                        <!-- SELECT CONTROLLER -->
+                        <input type="checkbox" id="sort" name="sort" class="peer/sort hidden">
+                        <!-- SELECT CONTROLLER -->
+                        <p>Sort by</p>
+                        <button class="rounded-full shadow-inner-stroke">
+                            <label for="sort" class="flex gap-2 px-4 py-2 cursor-pointer">
+                                <p>Name (A-Z)</p>
+                                <img src="../public/icons/button/arrow-down.svg" alt="Expand Sort Options">
+                            </label>
+                        </button>
+
+                        <div
+                            class="absolute z-10 hidden h-[120px] overflow-auto  peer-checked/sort:block top-20 bg-white shadow-sm w-full p-2 rounded-xl border border-[#F0F0F0]">
+                            <ul class="flex flex-col gap-2 font-secondary text-primary-sub text-xs">
+                                <li class="rounded-md bg-accent-hover  text-accent">
+                                    <label for="sort" class="cursor-pointer p-2 w-full flex">
+                                        <span>Name (A-Z)</span>
+                                    </label>
+                                </li>
+                                <li class="rounded-md hover:bg-[#708F8410]">
+                                    <label for="sort" class="cursor-pointer p-2 w-full flex">
+                                        <span>Last active</span>
+                                    </label>
+                                </li>
+                                <li class="rounded-md hover:bg-[#708F8410]">
+                                    <label for="sort" class="cursor-pointer p-2 w-full flex">
+                                        <span>Views</span>
+                                    </label>
+                                </li>
+                                <li class="rounded-md hover:bg-[#708F8410]">
+                                    <label for="sort" class="cursor-pointer p-2 w-full flex">
+                                        <span>Lorem</span>
+                                    </label>
+                                </li>
+                                <li class="rounded-md hover:bg-[#708F8410]">
+                                    <label for="sort" class="cursor-pointer p-2 w-full flex">
+                                        <span>Lorem</span>
+                                    </label>
+                                </li>
+                                <li class="rounded-md hover:bg-[#708F8410]">
+                                    <label for="sort" class="cursor-pointer p-2 w-full flex">
+                                        <span>Lorem</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="flex-1 flex flex-col gap-3 w-full relative">
+                        <input type="checkbox" id="tag" name="tag" class="peer/tag hidden">
+                        <!-- SELECT CONTROLLER -->
+                        <p class="font-secondary text-sm text-primary-sub">Tags</p>
+                        <div class="flex gap-2 px-4 py-[7px] rounded-full shadow-inner-stroke overflow-hidden ">
+                            <div class="flex-shrink-0 flex items-center gap-2 ">
+                                <button>
+                                    <label for="tag" class="flex gap-2 cursor-pointer">
+                                        <p class="font-secondary text-sm text-primary-sub">Select Tags</p>
+                                        <img src="../public/icons/button/arrow-down.svg" alt="Expand Sort Options">
+                                    </label>
+                                </button>
+                            </div>
+                            <div class="border-l border-[#F9F9F9] h-full w-[1px]"></div>
+                            <ul class="flex gap-2 font-secondary text-primary-sub text-xs overflow-auto">
+                                <li
+                                    class="flex-shrink-0 flex items-center gap-2 px-2 py-1 bg-accent-hover rounded-full">
+                                    <span>Sustainability</span>
+                                    <button>
+                                        <img src="../public/icons/button/close-circle.svg" alt="Remove Tag">
+                                    </button>
+                                </li>
+                                <li
+                                    class="flex-shrink-0 flex items-center gap-2 px-2 py-1 bg-accent-hover rounded-full">
+                                    <span>Learning</span>
+                                    <button>
+                                        <img src="../public/icons/button/close-circle.svg" alt="Remove Tag">
+                                    </button>
+                                </li>
+                                <li
+                                    class="flex-shrink-0 flex items-center gap-2 px-2 py-1 bg-accent-hover rounded-full">
+                                    <span>Environment</span>
+                                    <button>
+                                        <img src="../public/icons/button/close-circle.svg" alt="Remove Tag">
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div
+                            class="absolute z-10 hidden peer-checked/tag:block top-20 bg-white shadow-sm p-2 w-full lg:w-[135px] h-[120px] overflow-auto rounded-xl border border-[#F0F0F0]">
+                            <ul class="flex flex-col gap-2 font-secondary text-primary-sub text-xs">
+                                <li class="rounded-md bg-accent-hover  text-accent">
+                                    <label for="tag" class="cursor-pointer p-2 w-full flex">
+                                        <span>Sustainability</span>
+                                    </label>
+                                </li>
+                                <li class="rounded-md hover:bg-[#708F8410]">
+                                    <label for="tag" class="cursor-pointer p-2 w-full flex">
+                                        <span>Architecture</span>
+                                    </label>
+                                </li>
+                                <li class="rounded-md bg-accent-hover  text-accent">
+                                    <label for="tag" class="cursor-pointer p-2 w-full flex">
+                                        <span>Environment</span>
+                                    </label>
+                                </li>
+                                <li class="rounded-md hover:bg-[#708F8410]">
+                                    <label for="tag" class="cursor-pointer p-2 w-full flex">
+                                        <span>Professor</span>
+                                    </label>
+                                </li>
+                                <li class="rounded-md hover:bg-[#708F8410]">
+                                    <label for="tag" class="cursor-pointer p-2 w-full flex">
+                                        <span>Alchemist</span>
+                                    </label>
+                                </li>
+                                <li class="rounded-md hover:bg-[#708F8410]">
+                                    <label for="tag" class="cursor-pointer p-2 w-full flex">
+                                        <span>Lawyer</span>
+                                    </label>
+                                </li>
+                                <li class="rounded-md bg-accent-hover  text-accent">
+                                    <label for="tag" class="cursor-pointer p-2 w-full flex">
+                                        <span>Learning</span>
+                                    </label>
+                                </li>
+                                <li class="rounded-md bg-accent-hover  text-accent">
+                                    <label for="tag" class="cursor-pointer p-2 w-full flex">
+                                        <span>Lorem lorem</span>
+                                    </label>
+                                </li>
+                                <li class="rounded-md bg-accent-hover  text-accent">
+                                    <label for="tag" class="cursor-pointer p-2 w-full flex">
+                                        <span>Lorem lorem</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <div class="h-4 lg:h-5"></div>
+
+            <!-- GRID SECTION -->
+            <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                <article class="flex gap-4 p-3 h-fit bg-white rounded-2xl">
+                    <img class="size-14" src="../public/images/user_1.png" alt="Avatar">
+                    <div class="flex-1">
+                        <div class="flex-1 flex justify-between">
+                            <h2 class="font-secondary font-medium text-sm text-primary mb-4">James Schleifer</h2>
+                            <div class="flex-shrink-0 flex items-start gap-1">
+                                <img src="../public/icons/eye.svg" alt="Eye Icon">
+                                <span class="font-secondary text-primary-sub text-xs">42</span>
+                            </div>
+                        </div>
+                        <ul class="flex gap-2 font-secondary text-accent text-xs">
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Architecture</span>
+                            </li>
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Sustainability</span>
+                            </li>
+                        </ul>
+                        <p class="font-secondary text-xs mt-3">
+                            <span class="text-secondary">Last active</span>
+                            2 days ago
+                        </p>
+                    </div>
+                </article>
+
+                <article class="flex gap-4 p-3 h-fit bg-white rounded-2xl">
+                    <img class="size-14" src="../public/images/user_2.png" alt="Avatar">
+                    <div class="flex-1">
+                        <div class="flex-1 flex justify-between">
+                            <h2 class="font-secondary font-medium text-sm text-primary mb-4">James Schleifer</h2>
+                            <div class="flex-shrink-0 flex items-start gap-1">
+                                <img src="../public/icons/eye.svg" alt="Eye Icon">
+                                <span class="font-secondary text-primary-sub text-xs">42</span>
+                            </div>
+                        </div>
+                        <ul class="flex gap-2 font-secondary text-accent text-xs">
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Architecture</span>
+                            </li>
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Sustainability</span>
+                            </li>
+                        </ul>
+                        <p class="font-secondary text-xs mt-3">
+                            <span class="text-secondary">Last active</span>
+                            2 days ago
+                        </p>
+                    </div>
+                </article>
+
+                <article class="flex gap-4 p-3 h-fit bg-white rounded-2xl">
+                    <img class="size-14" src="../public/images/user_3.png" alt="Avatar">
+                    <div class="flex-1">
+                        <div class="flex-1 flex justify-between">
+                            <h2 class="font-secondary font-medium text-sm text-primary mb-4">James Schleifer</h2>
+                            <div class="flex-shrink-0 flex items-start gap-1">
+                                <img src="../public/icons/eye.svg" alt="Eye Icon">
+                                <span class="font-secondary text-primary-sub text-xs">42</span>
+                            </div>
+                        </div>
+                        <ul class="flex gap-2 font-secondary text-accent text-xs">
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Architecture</span>
+                            </li>
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Sustainability</span>
+                            </li>
+                        </ul>
+                        <p class="font-secondary text-xs mt-3">
+                            <span class="text-secondary">Last active</span>
+                            2 days ago
+                        </p>
+                    </div>
+                </article>
+
+                <article class="flex gap-4 p-3 h-fit bg-white rounded-2xl">
+                    <img class="size-14" src="../public/images/user_4.png" alt="Avatar">
+                    <div class="flex-1">
+                        <div class="flex-1 flex justify-between">
+                            <h2 class="font-secondary font-medium text-sm text-primary mb-4">James Schleifer</h2>
+                            <div class="flex-shrink-0 flex items-start gap-1">
+                                <img src="../public/icons/eye.svg" alt="Eye Icon">
+                                <span class="font-secondary text-primary-sub text-xs">42</span>
+                            </div>
+                        </div>
+                        <ul class="flex gap-2 font-secondary text-accent text-xs">
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Architecture</span>
+                            </li>
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Sustainability</span>
+                            </li>
+                        </ul>
+                        <p class="font-secondary text-xs mt-3">
+                            <span class="text-secondary">Last active</span>
+                            2 days ago
+                        </p>
+                    </div>
+                </article>
+
+                <article class="flex gap-4 p-3 h-fit bg-white rounded-2xl">
+                    <img class="size-14" src="../public/images/user_5.png" alt="Avatar">
+                    <div class="flex-1">
+                        <div class="flex-1 flex justify-between">
+                            <h2 class="font-secondary font-medium text-sm text-primary mb-4">James Schleifer</h2>
+                            <div class="flex-shrink-0 flex items-start gap-1">
+                                <img src="../public/icons/eye.svg" alt="Eye Icon">
+                                <span class="font-secondary text-primary-sub text-xs">42</span>
+                            </div>
+                        </div>
+                        <ul class="flex gap-2 font-secondary text-accent text-xs">
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Architecture</span>
+                            </li>
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Sustainability</span>
+                            </li>
+                        </ul>
+                        <p class="font-secondary text-xs mt-3">
+                            <span class="text-secondary">Last active</span>
+                            2 days ago
+                        </p>
+                    </div>
+                </article>
+
+                <article class="flex gap-4 p-3 h-fit bg-white rounded-2xl">
+                    <img class="size-14" src="../public/images/user_6.png" alt="Avatar">
+                    <div class="flex-1">
+                        <div class="flex-1 flex justify-between">
+                            <h2 class="font-secondary font-medium text-sm text-primary mb-4">James Schleifer</h2>
+                            <div class="flex-shrink-0 flex items-start gap-1">
+                                <img src="../public/icons/eye.svg" alt="Eye Icon">
+                                <span class="font-secondary text-primary-sub text-xs">42</span>
+                            </div>
+                        </div>
+                        <ul class="flex gap-2 font-secondary text-accent text-xs">
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Architecture</span>
+                            </li>
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Sustainability</span>
+                            </li>
+                        </ul>
+                        <p class="font-secondary text-xs mt-3">
+                            <span class="text-secondary">Last active</span>
+                            2 days ago
+                        </p>
+                    </div>
+                </article>
+
+                <article class="flex gap-4 p-3 h-fit bg-white rounded-2xl">
+                    <img class="size-14" src="../public/images/user_7.png" alt="Avatar">
+                    <div class="flex-1">
+                        <div class="flex-1 flex justify-between">
+                            <h2 class="font-secondary font-medium text-sm text-primary mb-4">James Schleifer</h2>
+                            <div class="flex-shrink-0 flex items-start gap-1">
+                                <img src="../public/icons/eye.svg" alt="Eye Icon">
+                                <span class="font-secondary text-primary-sub text-xs">42</span>
+                            </div>
+                        </div>
+                        <ul class="flex gap-2 font-secondary text-accent text-xs">
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Architecture</span>
+                            </li>
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Sustainability</span>
+                            </li>
+                        </ul>
+                        <p class="font-secondary text-xs mt-3">
+                            <span class="text-secondary">Last active</span>
+                            2 days ago
+                        </p>
+                    </div>
+                </article>
+
+                <article class="flex gap-4 p-3 h-fit bg-white rounded-2xl">
+                    <img class="size-14" src="../public/images/user_8.png" alt="Avatar">
+                    <div class="flex-1">
+                        <div class="flex-1 flex justify-between">
+                            <h2 class="font-secondary font-medium text-sm text-primary mb-4">James Schleifer</h2>
+                            <div class="flex-shrink-0 flex items-start gap-1">
+                                <img src="../public/icons/eye.svg" alt="Eye Icon">
+                                <span class="font-secondary text-primary-sub text-xs">42</span>
+                            </div>
+                        </div>
+                        <ul class="flex gap-2 font-secondary text-accent text-xs">
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Architecture</span>
+                            </li>
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Sustainability</span>
+                            </li>
+                        </ul>
+                        <p class="font-secondary text-xs mt-3">
+                            <span class="text-secondary">Last active</span>
+                            2 days ago
+                        </p>
+                    </div>
+                </article>
+
+                <article class="flex gap-4 p-3 h-fit bg-white rounded-2xl">
+                    <img class="size-14" src="../public/images/user_9.png" alt="Avatar">
+                    <div class="flex-1">
+                        <div class="flex-1 flex justify-between">
+                            <h2 class="font-secondary font-medium text-sm text-primary mb-4">James Schleifer</h2>
+                            <div class="flex-shrink-0 flex items-start gap-1">
+                                <img src="../public/icons/eye.svg" alt="Eye Icon">
+                                <span class="font-secondary text-primary-sub text-xs">42</span>
+                            </div>
+                        </div>
+                        <ul class="flex gap-2 font-secondary text-accent text-xs">
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Architecture</span>
+                            </li>
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Sustainability</span>
+                            </li>
+                        </ul>
+                        <p class="font-secondary text-xs mt-3">
+                            <span class="text-secondary">Last active</span>
+                            2 days ago
+                        </p>
+                    </div>
+                </article>
+
+                <article class="flex gap-4 p-3 h-fit bg-white rounded-2xl">
+                    <img class="size-14" src="../public/images/user_10.png" alt="Avatar">
+                    <div class="flex-1">
+                        <div class="flex-1 flex justify-between">
+                            <h2 class="font-secondary font-medium text-sm text-primary mb-4">James Schleifer</h2>
+                            <div class="flex-shrink-0 flex items-start gap-1">
+                                <img src="../public/icons/eye.svg" alt="Eye Icon">
+                                <span class="font-secondary text-primary-sub text-xs">42</span>
+                            </div>
+                        </div>
+                        <ul class="flex gap-2 font-secondary text-accent text-xs">
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Architecture</span>
+                            </li>
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Sustainability</span>
+                            </li>
+                        </ul>
+                        <p class="font-secondary text-xs mt-3">
+                            <span class="text-secondary">Last active</span>
+                            2 days ago
+                        </p>
+                    </div>
+                </article>
+
+                <article class="flex gap-4 p-3 h-fit bg-white rounded-2xl">
+                    <img class="size-14" src="../public/images/user_11.png" alt="Avatar">
+                    <div class="flex-1">
+                        <div class="flex-1 flex justify-between">
+                            <h2 class="font-secondary font-medium text-sm text-primary mb-4">James Schleifer</h2>
+                            <div class="flex-shrink-0 flex items-start gap-1">
+                                <img src="../public/icons/eye.svg" alt="Eye Icon">
+                                <span class="font-secondary text-primary-sub text-xs">42</span>
+                            </div>
+                        </div>
+                        <ul class="flex gap-2 font-secondary text-accent text-xs">
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Architecture</span>
+                            </li>
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Sustainability</span>
+                            </li>
+                        </ul>
+                        <p class="font-secondary text-xs mt-3">
+                            <span class="text-secondary">Last active</span>
+                            2 days ago
+                        </p>
+                    </div>
+                </article>
+
+                <article class="flex gap-4 p-3 h-fit bg-white rounded-2xl">
+                    <img class="size-14" src="../public/images/user_12.png" alt="Avatar">
+                    <div class="flex-1">
+                        <div class="flex-1 flex justify-between">
+                            <h2 class="font-secondary font-medium text-sm text-primary mb-4">James Schleifer</h2>
+                            <div class="flex-shrink-0 flex items-start gap-1">
+                                <img src="../public/icons/eye.svg" alt="Eye Icon">
+                                <span class="font-secondary text-primary-sub text-xs">42</span>
+                            </div>
+                        </div>
+                        <ul class="flex gap-2 font-secondary text-accent text-xs">
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Architecture</span>
+                            </li>
+                            <li
+                                class="flex-shrink-0 flex items-center gap-2 px-2 py-[3px] bg-accent-hover rounded-full">
+                                <span>Sustainability</span>
+                            </li>
+                        </ul>
+                        <p class="font-secondary text-xs mt-3">
+                            <span class="text-secondary">Last active</span>
+                            2 days ago
+                        </p>
+                    </div>
+                </article>
+
+            </section>
+        </div>
+    </main>
 </body>
 </html>

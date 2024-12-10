@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/global.css">
     <link href="https://fonts.googleapis.com/css2?family=Days+One&family=Poppins:wght@400;500&display=swap"
         rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -44,7 +45,8 @@
                     colors: {
                         accent: {
                             DEFAULT: "#398167",
-                            hover: "#3981661a"
+                            hover: "#3981661a",
+                            dark: "#1C5F46"
                         },
                         primary: {
                             DEFAULT: '#181E1D',
@@ -69,33 +71,17 @@
             },
         }
     </script>
+
     <title>Seed Details</title>
-    <!-- GENERAL STYLE -->
-    <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-        }
-
-        a {
-            cursor: pointer;
-        }
-
-        nav:has(.w-9) .avatar-section {
-            display: none;
-            /* Equivalent to Tailwind's `hidden` */
-        }
-    </style>
 </head>
 
 <body class="min-h-screen bg-background">
-    <header class="sticky top-0 z-10  rounded-b-2xl shadow-inner-stroke shadow-[#FAFAFA] bg-white">
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-10  rounded-b-2xl outline outline-[#FAFAFA] bg-white">
         <nav class="flex items-center justify-between px-4 md:px-12 h-navbar w-full">
             <a href="../index.html">
-                <img src="../public/icons/navigation/logo.svg" alt="GROOVE">
+                <img src="../public/icons/navigation/logo.svg" class="h-4 md:h-full" alt="GROOVE LOGO">
             </a>
             <h1 class="hidden lg:block uppercase font-primary text-primary text-lg">Seeds</h1>
             <div class="flex gap-2">
@@ -107,24 +93,97 @@
                     </div>
                 </button>
                 <button class="flex items-center justify-center lg:hidden size-10 bg-background rounded-lg">
-                    <img src="../public/icons/navigation/menu.svg" alt="Menu">
+                    <label for="menu-toggle" class="w-full flex items-center justify-center">
+                        <img src="../public/icons/navigation/menu.svg" alt="Menu">
+                    </label>
                 </button>
             </div>
         </nav>
+
+        <!-- MOBILE NAVIGATION -->
+        <!-- TOGGLE CONTROLLER -->
+        <input type="checkbox" id="menu-toggle" class="hidden peer">
+        <!-- BLUR EFFECT -->
+        <div
+            class="fixed inset-0 bg-[#dddddd] bg-opacity-50 backdrop-blur-sm z-10 opacity-0 pointer-events-none peer-checked:opacity-100 peer-checked:pointer-events-auto transition-opacity">
+        </div>
+
+        <div
+            class="fixed bottom-0 left-0 w-full bg-white rounded-t-[24px] shadow-lg z-20 transform translate-y-full peer-checked:translate-y-0 transition-transform duration-300">
+            <div class="flex flex-col p-4">
+                <!-- CLOSE NAVIGATION -->
+                <label for="menu-toggle" class="border-t border-4 w-9 rounded-full border-gray-300 mx-auto"></label>
+                <div class="h-8"></div>
+                <nav>
+                    <h3 class="uppercase font-secondary text-xs text-[#BABABA] font-medium mb-4">MENU</h3>
+                    <ul ul role="list" aria-labelledby="menu" class="flex flex-col gap-3">
+                        <li class="rounded-lg text-secondary" aria-current="page">
+                            <a href="../index.html" class="flex gap-2 px-2 py-3">
+                                <img src="../public/icons/navigation/book.svg" alt="Book Icon" />
+                                <p class="font-secondary capitalize">Collector</p>
+                            </a>
+                        </li>
+                        <li class="rounded-lg text-accent bg-accent-hover">
+                            <a href="./seeds.html" class="flex gap-2 px-2 py-3">
+                                <img src="../public/icons/navigation/book-open-active.svg"
+                                    alt="Opend Book Active Icon" />
+
+                                <p class="font-secondary capitalize">Seeds</p>
+                            </a>
+                        </li>
+                        <li class="rounded-lg text-secondary">
+                            <a href="./sprouts.html" class="flex gap-2 px-2 py-3">
+                                <img src="../public/icons/navigation/bookmark.svg" alt="Bookmark Icon" />
+                                <p class="font-secondary capitalize">Sprouts</p>
+                            </a>
+                        </li>
+                        <li class="rounded-lg text-secondary">
+                            <a href="./blooms.html" class="flex gap-2 px-2 py-3">
+                                <img src="../public/icons/navigation/message-text.svg" alt="Message text Icon" />
+
+                                <p class="font-secondary capitalize">Blooms</p>
+                            </a>
+                        </li>
+                        <li class="rounded-lg text-secondary">
+                            <a href="./pollinators.html" class="flex gap-2 px-2 py-3">
+                                <img src="../public/icons/navigation/people.svg" alt="People Icon" />
+                                <p class="font-secondary capitalize">Pollinators</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="h-8"></div>
+                    <!-- USER MENU -->
+                    <div class="p-3 bg-[#EDF4F1] rounded-xl overflow-hidden">
+                        <div class="flex justify-between transition-all">
+                            <div class="flex-shrink-0 flex items-center gap-2">
+                                <div class="size-10">
+                                    <img src="../public/images/avatar.png" alt="Avatar">
+                                </div>
+                                <p class="capitalize text-sm font-medium">Carter Dorwart</p>
+                            </div>
+                            <button class="justify-end transition-all">
+                                <img src="../public/icons/button/more.svg" alt="More">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="h-6"></div>
+                </nav>
+            </div>
+        </div>
     </header>
 
-    <!-- //===============================================// -->
+    <!-- PAGE -->
 
     <main class="flex px-4 pt-[10px] pb-4 md:p-6 relative">
         <!-- SIDEBAR -->
         <aside class="hidden lg:flex flex-col sticky z-10 p-4 top-24 h-sidebarH bg-white rounded-2xl">
-            <!-- SIDEBAR CONTROLLER -->
+            <!-- TOGGLE CONTROLLER -->
             <input type="checkbox" id="sidebar-toggle" class="hidden peer" checked />
             <label for="sidebar-toggle"
-                class="absolute top-12 -right-3 cursor-pointer size-6 bg-accent rounded-full transform transition-transform duration-500 ease-in-out peer-checked:rotate-180">
+                class="absolute top-12 -right-3 cursor-pointer size-6 bg-accent hover:bg-accent-dark rounded-full transform transition-transform duration-500 ease-in-out peer-checked:rotate-180">
                 <img class="object-cover" src="../public/icons/button/arrow-right.svg" alt="Expand Arrow Icon">
             </label>
-
+            <!-- SIDEBAR NAVIGATION -->
             <nav
                 class="flex-1 transition-all duration-300 h-full w-9 peer-checked:w-[calc(246px-32px)] overflow-hidden">
                 <h3 class="uppercase font-secondary text-xs text-[#BABABA] font-medium mb-4">MENU</h3>
@@ -132,9 +191,9 @@
                     <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
                         <a href="../index.html" class="flex gap-2 px-2 py-3 cursor-pointer">
                             <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-                                src="../public/icons/navigation/book-active.svg" alt="Book Active" />
+                                src="../public/icons/navigation/book-active.svg" alt="Book Active Icon" />
                             <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
-                                src="../public/icons/navigation/book.svg" alt="Book" />
+                                src="../public/icons/navigation/book.svg" alt="Book Icon" />
 
                             <p class="font-secondary capitalize">Collector</p>
                         </a>
@@ -149,38 +208,40 @@
                     </li>
 
                     <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
-                        <a href="./pages/sprouts.html" class="flex gap-2 px-2 py-3 cursor-pointer">
+                        <a href="./sprouts.html" class="flex gap-2 px-2 py-3 cursor-pointer">
                             <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-                                src="../public/icons/navigation/bookmark-active.svg" alt="Bookmark Active" />
+                                src="../public/icons/navigation/bookmark-active.svg" alt="Bookmark Active Icon" />
                             <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
-                                src="../public/icons/navigation/bookmark.svg" alt="Bookmark" />
+                                src="../public/icons/navigation/bookmark.svg" alt="Bookmark Icon" />
 
                             <p class="font-secondary capitalize">Sprouts</p>
                         </a>
                     </li>
 
                     <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
-                        <a href="./pages/blooms.html" class="flex gap-2 px-2 py-3 cursor-pointer">
+                        <a href="./blooms.html" class="flex gap-2 px-2 py-3 cursor-pointer">
                             <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-                                src="../public/icons/navigation/message-text-active.svg" alt="Message text Active" />
+                                src="../public/icons/navigation/message-text-active.svg"
+                                alt="Message text Active Icon" />
                             <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
-                                src="../public/icons/navigation/message-text.svg" alt="Message text" />
+                                src="../public/icons/navigation/message-text.svg" alt="Message text Icon" />
 
                             <p class="font-secondary capitalize">Blooms</p>
                         </a>
                     </li>
                     <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
-                        <a href="./pages/blooms.html" class="flex gap-2 px-2 py-3 cursor-pointer">
+                        <a href="./pollinators.html" class="flex gap-2 px-2 py-3 cursor-pointer">
                             <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-                                src="../public/icons/navigation/people-active.svg" alt="People Active" />
+                                src="../public/icons/navigation/people-active.svg" alt="People Active Icon" />
                             <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
-                                src="../public/icons/navigation/people.svg" alt="People" />
+                                src="../public/icons/navigation/people.svg" alt="People Icon" />
 
                             <p class="font-secondary capitalize">Pollinators</p>
                         </a>
                     </li>
                 </ul>
             </nav>
+            <!-- USER MENU -->
             <div
                 class="w-9 opacity-0 peer-checked:opacity-100 peer-checked:w-[calc(246px-32px)] transition-all duration-200 p-3 bg-[#EDF4F1] rounded-xl overflow-hidden">
                 <div class="flex justify-between transition-all">
@@ -191,7 +252,7 @@
                         <p class="capitalize text-sm font-medium">Carter Dorwart</p>
                     </div>
                     <button class="justify-end transition-all">
-                        <img src="../public/icons/button/more.svg" alt="More">
+                        <img src="../public/icons/button/more.svg" alt="More Icon">
                     </button>
                 </div>
             </div>
@@ -208,14 +269,18 @@
                 <h1 class="lg:hidden uppercase font-primary text-mb_lg text-primary mb-4">Seeds</h1>
             </header>
 
-            <section class="flex flex-col gap-6 px-2 py-6 lg:px-6 h-fit w-full rounded-2xl bg-white">
+            <section class="px-2 py-6 lg:px-6 rounded-2xl bg-white">
                 <a href="./seeds.html" class="flex gap-2 items-center">
                     <img src="../public/icons/button/arrow-left.svg" alt="Arrow Left Icon">
-                    <p class="font-secondary text-secondary">Back to Seeds</p>
+                    <p class="font-secondary text-secondary hover:underline">Back to Seeds</p>
                 </a>
-                <section class="flex  flex-col xl:flex-row gap-6 w-full">
+                <div class="h-6"></div>
+                
+                <!-- SECTION -->
+                <section class="flex flex-col xl:flex-row gap-6 w-full">
                     <div class="h-[250px] md:h-[350px] xl:size-[423px]">
-                        <img class="h-full w-full object-cover rounded-[6px]" src="../public/images/preview_1.png" alt="Preview">
+                        <img class="h-full w-full object-cover rounded-[6px]" src="../public/images/preview_1.png"
+                            alt="Preview">
                     </div>
                     <div class="flex-1">
                         <header class="flex flex-col gap-4">
@@ -256,14 +321,16 @@
                         <ul class="flex flex-col gap-6 font-secondary">
                             <li class="flex flex-col gap-2">
                                 <h4 class="text-sm text-secondary">Description:</h4>
-                                <p class="text-sm md:text-base text-primary-sub">This guide explores sustainable building
+                                <p class="text-sm md:text-base text-primary-sub">This guide explores sustainable
+                                    building
                                     practices, emphasizing resource efficiency,
                                     environmental balance, and
                                     innovative design solutions.</p>
                             </li>
                             <li class="flex flex-col gap-2">
                                 <h4 class="text-sm text-secondary">Summary:</h4>
-                                <p class="text-sm md:text-base text-primary-sub">An overview of how eco-design can reduce
+                                <p class="text-sm md:text-base text-primary-sub">An overview of how eco-design can
+                                    reduce
                                     environmental impact in architecture.</p>
                             </li>
                             <li class="flex flex-col gap-2">
@@ -271,135 +338,190 @@
                                 <p class="text-sm md:text-base text-primary-sub">15-minute video.</p>
                             </li>
                         </ul>
-
                         <div class="h-6"></div>
+                        <footer class="flex flex-col md:flex-row gap-2 relative">
+                            <!-- MODAL CONTROLLER -->
+                            <input type="checkbox" id="modal-toggle" class="hidden peer">
+                            <!-- MODAL CONTROLLER -->
 
-                        <footer class="flex flex-col md:flex-row gap-2">
-                            <button class="flex items-center justify-center gap-2 py-3 px-6 bg-accent rounded-full ">
+                            <button
+                                class="flex items-center justify-center gap-2 py-3 px-6 bg-accent rounded-full hover:bg-[#1C5F46] transition-all duration-300 ease-in-out">
                                 <img src="../public/icons/button/add-circle.svg" alt="Add Icon">
                                 <p class="font-secondary font-medium text-sm md:text-base text-white">Sprout</p>
                             </button>
-                            <button
-                                class="flex items-center justify-center gap-2 py-3 px-6 shadow-inner-stroke shadow-[#F0F0F0] rounded-full ">
+
+                            <!-- MODAL TOGGLE -->
+                            <label for="modal-toggle"
+                                class="flex items-center justify-center cursor-pointer gap-2 py-3 px-6 outline outline-[#F0F0F0] hover:outline-[#d7d7d7] transition-all duration-150 ease-in-out rounded-full ">
                                 <img class="size-5" src="../public/icons/button/trash.svg" alt="Add Icon">
                                 <p class="font-secondary text-sm md:text-base text-danger">Compost</p>
-                            </button>
+                            </label>
+
+                            <!-- MODAL -->
+                            <div id="modal"
+                                class="hidden peer-checked:flex peer-checked:pointer-events-auto transition-all duration-300 ease-in-out fixed z-50 inset-0 bg-[#dddddd] bg-opacity-50 backdrop-blur-sm items-center justify-center">
+                                <div class="bg-white rounded-2xl border border-[#FAFAFA] md:w-[462px] w-[358px]">
+                                    <div class="flex justify-between items-center p-6">
+                                        <h2 class="text-base md:text-md font-primary text-primary">Compost Seed</h2>
+                                        <label for="modal-toggle"
+                                            class="cursor-pointer text-sm font-medium hover:text-gray-700">
+                                            <img class="size-6" src="../public/icons/button/close-circle.svg"
+                                                alt="Close">
+                                        </label>
+                                    </div>
+                                    <div class="flex flex-col items-center p-3 mb-8 gap-6 text-center">
+                                        <img src="../public/images/compost.png" alt="Placeholder"
+                                            class="rounded-md w-[170px]">
+                                        <p class="font-secondary text-primary-sub text-sm md:text-base ">Are you sure
+                                            you
+                                            want to delete this seed?
+                                            <br>
+                                            This action can not
+                                            be undone.
+                                        </p>
+                                    </div>
+                                    <div
+                                        class="flex flex-col-reverse md:flex-row justify-end gap-4 p-4 border-t border-[#FAFAFA]">
+                                        <button
+                                            class="flex justify-center items-center px-4 py-2 hover:bg-gray-100 rounded-full">
+                                            <label for="modal-toggle" class="cursor-pointer text-gray-700">
+                                                Cancel
+                                            </label>
+                                        </button>
+                                        <button
+                                            class="flex justify-center gap-2 md:px-6 py-3 bg-danger hover:bg-orange-600 text-white rounded-full ">
+                                            <img class="size-6" src="../public/icons/button/trash-white.svg"
+                                                alt="Delete Icon">
+                                            Compost
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </footer>
                     </div>
-
-
                 </section>
 
-                <!-- SEPERATOR -->
-                <div class="border-b border-[#F9F9F9]"></div>
+                <div class="py-6">
+                    <div class="border-b border-[#F9F9F9]"></div>
+                </div>
 
-                <!-- GRID -->
-                <section class=" w-full">
+                <!-- GRID SECTION -->
+                <section>
                     <header>
                         <h2 class="font-primary text-primary text-md">Sprouted from this Seed</h2>
                     </header>
                     <div class="h-4"></div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-                        <article class="p-3 h-fit bg-white outline outline-[#FAFAFA] rounded-xl">
-                            <div class="flex items-center justify-center w-full h-[200px]">
-                                <img class="w-full h-full object-cover rounded-[6px]" src="../public/images/card_3.png"
-                                    alt="Cover">
-                            </div>
-                            <div class="mt-3"></div>
-                            <div>
-                                <h2 class="font-secondary font-medium text-base text-primary mb-2">Rethinking Renewable
-                                    Energy.
-                                </h2>
-                                <p class="font-secondary text-secondary text-sm">
-                                    This post explores practical methods for incorporating eco-friendly materials into
-                                    urban projects, emphasizing
-                                    cost-efficiency and environmental impact
-                                </p>
-                            </div>
-                            <div class="my-2 border-t border-[#F9F9F9]"></div>
-
-                            <div class="flex justify-between">
-                                <div class="flex gap-2 items-center">
-                                    <div class="size-8 rounded-full">
-                                        <img class="h-full object-cover rounded-full" src="../public/images/avatar_2.png" alt="User">
-                                    </div>
-                                    <p class="font-secondary text-sm">Carter Dorwart</p>
+                    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+                        <article class="p-3 bg-white outline outline-[#FAFAFA] rounded-xl">
+                            <a href="">
+                                <div class="flex items-center justify-center w-full h-[200px]">
+                                    <img class="w-full h-full object-cover rounded-[6px]"
+                                        src="../public/images/card_3.png" alt="Cover">
                                 </div>
-                                <button class="flex items-center gap-3 bg-accent-hover px-2 py-1 rounded-full">
-                                    <img src="../public/icons/button/like-active.svg" alt="Like Active Icon">
-                                    <span class="font-secondary text-accent text-xs">25 Likes</span>
-                                </button>
-                            </div>
+                                <div class="h-3"></div>
+                                <header>
+                                    <h2 class="font-secondary font-medium text-base text-primary mb-2">Rethinking
+                                        Renewable
+                                        Energy.
+                                    </h2>
+                                    <p class="font-secondary text-secondary text-sm">
+                                        This post explores practical methods for incorporating eco-friendly materials
+                                        into
+                                        urban projects, emphasizing
+                                        cost-efficiency and environmental impact
+                                    </p>
+                                </header>
+                                <div class="my-2 border-t border-[#F9F9F9]"></div>
+                                <footer class="flex justify-between">
+                                    <div class="flex gap-2 items-center">
+                                        <div class="size-8 rounded-full">
+                                            <img class="h-full object-cover rounded-full"
+                                                src="../public/images/avatar_2.png" alt="User">
+                                        </div>
+                                        <p class="font-secondary text-sm">Carter Dorwart</p>
+                                    </div>
+                                    <button class="flex items-center gap-3 bg-accent-hover px-2 py-1 rounded-full">
+                                        <img src="../public/icons/button/like-active.svg" alt="Like Active Icon">
+                                        <span class="font-secondary text-accent text-xs">25 Likes</span>
+                                    </button>
+                                </footer>
+                            </a>
                         </article>
 
                         <article class="p-3 h-fit bg-white outline outline-[#FAFAFA] rounded-xl">
-                            <div class="flex items-center justify-center w-full h-[200px]">
-                                <img class="w-full h-full object-cover rounded-[6px]" src="../public/images/card_7.png"
-                                    alt="Cover">
-                            </div>
-                            <div class="mt-3"></div>
-                            <div>
-                                <h2 class="font-secondary font-medium text-base text-primary mb-2">Rethinking Renewable
-                                    Energy.
-                                </h2>
-                                <p class="font-secondary text-secondary text-sm">
-                                    This post explores practical methods for incorporating eco-friendly materials into
-                                    urban projects, emphasizing
-                                    cost-efficiency and environmental impact
-                                </p>
-                            </div>
-                            <div class="my-2 border-t border-[#F9F9F9]"></div>
-
-                            <div class="flex justify-between">
-                                <div class="flex gap-2 items-center">
-                                    <div class="size-8 rounded-full">
-                                        <img class="h-full object-cover rounded-full"
-                                            src="../public/images/avatar_3.png" alt="User">
-                                    </div>
-                                    <p class="font-secondary text-sm">Carter Dorwart</p>
+                            <a href="">
+                                <div class="flex items-center justify-center w-full h-[200px]">
+                                    <img class="w-full h-full object-cover rounded-[6px]"
+                                        src="../public/images/card_7.png" alt="Cover">
                                 </div>
-                                <button
-                                    class="flex items-center gap-3 outline outline-[#ECECEC] px-2 py-1 rounded-full">
-                                    <img src="../public/icons/button/like.svg" alt="Like Icon">
-                                    <span class="font-secondary text-primary-sub text-xs">24 Likes</span>
-                                </button>
-                            </div>
+                                <div class="h-3"></div>
+                                <header>
+                                    <h2 class="font-secondary font-medium text-base text-primary mb-2">Rethinking
+                                        Renewable
+                                        Energy.
+                                    </h2>
+                                    <p class="font-secondary text-secondary text-sm">
+                                        This post explores practical methods for incorporating eco-friendly materials
+                                        into
+                                        urban projects, emphasizing
+                                        cost-efficiency and environmental impact
+                                    </p>
+                                </header>
+                                <div class="my-2 border-t border-[#F9F9F9]"></div>
+                                <footer class="flex justify-between">
+                                    <div class="flex gap-2 items-center">
+                                        <div class="size-8 rounded-full">
+                                            <img class="h-full object-cover rounded-full"
+                                                src="../public/images/avatar_3.png" alt="User">
+                                        </div>
+                                        <p class="font-secondary text-sm">Carter Dorwart</p>
+                                    </div>
+                                    <button
+                                        class="flex items-center gap-3 outline outline-[#ECECEC] px-2 py-1 rounded-full">
+                                        <img src="../public/icons/button/like.svg" alt="Like Icon">
+                                        <span class="font-secondary text-primary-sub text-xs">24 Likes</span>
+                                    </button>
+                                </footer>
+                            </a>
                         </article>
 
                         <article class="p-3 h-fit bg-white outline outline-[#FAFAFA] rounded-xl">
-                            <div class="flex items-center justify-center w-full h-[200px]">
-                                <img class="w-full h-full object-cover rounded-[6px]" src="../public/images/card_5.png"
-                                    alt="Cover">
-                            </div>
-                            <div class="mt-3"></div>
-                            <div>
-                                <h2 class="font-secondary font-medium text-base text-primary mb-2">Rethinking Renewable
-                                    Energy.
-                                </h2>
-                                <p class="font-secondary text-secondary text-sm">
-                                    This post explores practical methods for incorporating eco-friendly materials into
-                                    urban projects, emphasizing
-                                    cost-efficiency and environmental impact
-                                </p>
-                            </div>
-                            <div class="my-2 border-t border-[#F9F9F9]"></div>
-
-                            <div class="flex justify-between">
-                                <div class="flex gap-2 items-center">
-                                    <div class="size-8 rounded-full">
-                                        <img class="h-full object-cover rounded-full"
-                                            src="../public/images/avatar_4.png" alt="User">
-                                    </div>
-                                    <p class="font-secondary text-sm">Carter Dorwart</p>
+                            <a href="">
+                                <div class="flex items-center justify-center w-full h-[200px]">
+                                    <img class="w-full h-full object-cover rounded-[6px]"
+                                        src="../public/images/card_5.png" alt="Cover">
                                 </div>
-                                <button
-                                    class="flex items-center gap-3 outline outline-[#ECECEC] px-2 py-1 rounded-full">
-                                    <img src="../public/icons/button/like.svg" alt="Like Icon">
-                                    <span class="font-secondary text-primary-sub text-xs">24 Likes</span>
-                                </button>
-                            </div>
+                                <div class="h-3"></div>
+                                <header>
+                                    <h2 class="font-secondary font-medium text-base text-primary mb-2">Rethinking
+                                        Renewable
+                                        Energy.
+                                    </h2>
+                                    <p class="font-secondary text-secondary text-sm">
+                                        This post explores practical methods for incorporating eco-friendly materials
+                                        into
+                                        urban projects, emphasizing
+                                        cost-efficiency and environmental impact
+                                    </p>
+                                </header>
+                                <div class="my-2 border-t border-[#F9F9F9]"></div>
+                                <footer class="flex justify-between">
+                                    <div class="flex gap-2 items-center">
+                                        <div class="size-8 rounded-full">
+                                            <img class="h-full object-cover rounded-full"
+                                                src="../public/images/avatar_4.png" alt="User">
+                                        </div>
+                                        <p class="font-secondary text-sm">Carter Dorwart</p>
+                                    </div>
+                                    <button
+                                        class="flex items-center gap-3 outline outline-[#ECECEC] px-2 py-1 rounded-full">
+                                        <img src="../public/icons/button/like.svg" alt="Like Icon">
+                                        <span class="font-secondary text-primary-sub text-xs">24 Likes</span>
+                                    </button>
+                                </footer>
+                            </a>
                         </article>
-                    </div>
+                    </section>
                 </section>
             </section>
         </div>

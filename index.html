@@ -1,363 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="global.css">
-    <link href="https://fonts.googleapis.com/css2?family=Days+One&family=Poppins:wght@400;500&display=swap"
-        rel="stylesheet">
-    <link href="/dist/styles.css" rel="stylesheet">    
-    <title>Collector</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Days+One&family=Poppins:wght@400;500&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="../dist/styles.css" rel="stylesheet">
+  <title>Login</title>
 </head>
 
-<body class="min-h-screen bg-background">
+<body>
 
-    <!-- NAVIGATION BAR -->
-    <header class="sticky top-0 z-10 rounded-b-2xl outline outline-[#FAFAFA] bg-white">
-        <nav class="flex items-center justify-between px-4 lg:px-12 h-navbar w-full">
-            <a href="./index.html">
-                <img src="./public/icons/navigation/logo.svg" class="h-4 md:h-full"  alt="GROOVE LOGO">
-            </a>
-            <h1 class="hidden lg:block uppercase font-primary text-primary text-lg">Collector</h1>
-            <div class="flex gap-2">
-                <button class="flex items-center justify-center size-10 relative rounded-lg bg-background">
-                    <img src="./public/icons/button/notification-bing.svg" alt="Notification" />
-                    <div
-                        class="flex items-center justify-center absolute -right-[2px] -top-[2px] z-10 size-4 bg-accent text-white rounded-full">
-                        <span class="text-xs font-poppins">2</span>
-                    </div>
-                </button>
-                <button class="flex items-center justify-center lg:hidden size-10 bg-background rounded-lg">
-                    <label for="menu-toggle" class="w-full flex items-center justify-center">
-                        <img src="./public/icons/navigation/menu.svg" alt="Menu">
-                    </label>
-                </button>
-            </div>
-        </nav>
+  <div class="flex h-screen">
+    <!-- Left Section -->
+    <div class="hidden md:w-1/2  md:flex items-center justify-center p-6 ">
+      <div class="w-full h-full overflow-hidden rounded-2xl">
+        <img src="./../public/images/login-cover.png" alt="Placeholder"
+          class="h-max min-w-full min-h-full max-h-screen object-cover">
+      </div>
+    </div>
 
-        <!-- MOBILE NAVIGATION -->
+    <!-- Right Section -->
+    <div class="w-full md:w-1/2 flex flex-col justify-between lg:p-16 sm:p-8 p-4 py-8 ">
+      <!-- Logo -->
+      <div class="flex justify-center md:justify-start">
+        <a href="/pages/collector.html"><img src="./../public/icons/navigation/logo.svg" alt="Logo"
+            class="w-[74px]"></a>
+      </div>
 
-        <input type="checkbox" id="menu-toggle" class="hidden peer">
-        <!-- BLUR EFFECT -->
-        <div
-            class="fixed inset-0 bg-[#dddddd] bg-opacity-50 backdrop-blur-sm z-10 opacity-0 pointer-events-none peer-checked:opacity-100 peer-checked:pointer-events-auto transition-opacity">
-        </div>
+      <!-- Login Form -->
+      <div class="flex-grow flex flex-col justify-center mx-auto w-full">
+        <div class="space-y-6">
+          <div class="text-center md:text-left space-y-4">
+            <h1 class="text-4xl font-primary text-primary">Log in</h1>
+            <p class="mt-2 font-secondary text-sm md:text-base text-primary-sub">Welcome to your soil of ideas. Let’s
+              grow
+              something
+              amazing.</p>
+          </div>
 
-        <div
-            class="fixed bottom-0 left-0 w-full bg-white rounded-t-[24px] shadow-lg z-20 transform translate-y-full peer-checked:translate-y-0 transition-transform duration-300">
-            <div class="flex flex-col p-4">
-                <!-- CLOSE NAVIGATION -->
-                <label for="menu-toggle" class="border-t border-4 w-9 rounded-full border-gray-300 mx-auto"></label>
-                <div class="h-8"></div>
-                <nav>
-                    <h3 class="uppercase font-secondary text-xs text-[#BABABA] font-medium mb-4">MENU</h3>
-                    <ul ul role="list" aria-labelledby="menu" class="flex flex-col gap-3">
-                        <li class="rounded-lg transition-all text-accent bg-accent-hover" aria-current="page">
-                            <a class="flex gap-2 px-2 py-3">
-                                <img src="../public/icons/navigation/book-active.svg" alt="Book active Icon" />
-                                <p class="font-secondary capitalize">Collector</p>
-                            </a>
-                        </li>
-                        <li class="rounded-lg text-secondary">
-                            <a href="./pages/seeds.html" class="flex gap-2 px-2 py-3">
-                                <img src="../public/icons/navigation/book-open.svg" alt="Opend Book Icon" />
-
-                                <p class="font-secondary capitalize">Seeds</p>
-                            </a>
-                        </li>
-                        <li class="rounded-lg text-secondary">
-                            <a href="./pages/sprouts.html" class="flex gap-2 px-2 py-3">
-                                <img src="../public/icons/navigation/bookmark.svg" alt="Bookmark Icon" />
-                                <p class="font-secondary capitalize">Sprouts</p>
-                            </a>
-                        </li>
-                        <li class="rounded-lg text-secondary">
-                            <a href="./pages/blooms.html" class="flex gap-2 px-2 py-3">
-                                <img src="../public/icons/navigation/message-text.svg" alt="Message text Icon" />
-
-                                <p class="font-secondary capitalize">Blooms</p>
-                            </a>
-                        </li>
-                        <li class="rounded-lg text-secondary">
-                            <a href="./pages/pollinators.html" class="flex gap-2 px-2 py-3">
-                                <img src="../public/icons/navigation/people.svg" alt="People Icon" />
-                                <p class="font-secondary capitalize">Pollinators</p>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="h-8"></div>
-                    <!-- USER MENU -->
-                    <div class="p-3 bg-[#EDF4F1] rounded-xl overflow-hidden">
-                        <div class="flex justify-between transition-all">
-                            <div class="flex-shrink-0 flex items-center gap-2">
-                                <div class="size-10">
-                                    <img src="/public/images/avatar.png" alt="Avatar">
-                                </div>
-                                <p class="capitalize text-sm font-medium">Carter Dorwart</p>
-                            </div>
-                            <button class="justify-end transition-all">
-                                <img src="./public/icons/button/more.svg" alt="More">
-                            </button>
-                        </div>
-                    </div>
-                    <div class="h-6"></div>
-                </nav>
-            </div>
-        </div>
-
-    </header>
-
-    <!-- PAGE -->
-
-    <main class="flex px-4 pt-[10px] pb-4 md:p-6 relative">
-
-        <!-- SIDEBAR -->
-        <aside class="hidden lg:flex flex-col sticky z-10 p-4 top-24 h-sidebarH bg-white rounded-2xl">
-            <!-- SIDEBAR CONTROLLER -->
-            <input type="checkbox" id="sidebar-toggle" class="hidden peer" checked />
-            <label for="sidebar-toggle"
-                class="absolute top-12 -right-3 cursor-pointer size-6 bg-accent hover:bg-accent-dark rounded-full transform transition-transform duration-500 ease-in-out peer-checked:rotate-180">
-                <img class="object-cover" src="./public/icons/button/arrow-right.svg" alt="Expand Arrow Icon">
-            </label>
-            <!-- SIDEBAR NAVIGATION -->
-            <nav
-                class="flex-1 transition-all duration-300 h-full w-9 peer-checked:w-[calc(246px-32px)] overflow-hidden">
-                <h3 class="uppercase font-secondary text-xs text-[#BABABA] font-medium mb-4">MENU</h3>
-                <ul ul role="list" aria-labelledby="menu" class="flex-1 flex flex-col gap-3">
-                    <li class="rounded-lg transition-all text-accent bg-accent-hover" aria-current="page">
-                        <a class="flex gap-2 px-2 py-3 cursor-pointer">
-                            <img class="" src="../public/icons/navigation/book-active.svg" alt="Book active Icon" />
-                            <p class="font-secondary capitalize">Collector</p>
-                        </a>
-                    </li>
-
-                    <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
-                        <a href="./pages/seeds.html" class="flex gap-2 px-2 py-3 cursor-pointer">
-                            <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-                                src="../public/icons/navigation/book-open-active.svg" alt="Opend Book Active" />
-                            <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
-                                src="../public/icons/navigation/book-open.svg" alt="Opend Book Icon" />
-
-                            <p class="font-secondary capitalize">Seeds</p>
-                        </a>
-                    </li>
-
-                    <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
-                        <a href="./pages/sprouts.html" class="flex gap-2 px-2 py-3 cursor-pointer">
-                            <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-                                src="../public/icons/navigation/bookmark-active.svg" alt="Bookmark Active" />
-                            <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
-                                src="../public/icons/navigation/bookmark.svg" alt="Bookmark Icon" />
-
-                            <p class="font-secondary capitalize">Sprouts</p>
-                        </a>
-                    </li>
-
-                    <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
-                        <a href="./pages/blooms.html" class="flex gap-2 px-2 py-3 cursor-pointer">
-                            <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-                                src="../public/icons/navigation/message-text-active.svg" alt="Message text Active" />
-                            <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
-                                src="../public/icons/navigation/message-text.svg" alt="Message text Icon" />
-
-                            <p class="font-secondary capitalize">Blooms</p>
-                        </a>
-                    </li>
-                    <li class="rounded-lg hover:bg-accent-hover transition-all text-secondary hover:text-accent group">
-                        <a href="./pages/blooms.html" class="flex gap-2 px-2 py-3 cursor-pointer">
-                            <img class="hidden group-hover:block transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-                                src="../public/icons/navigation/people-active.svg" alt="People Active" />
-                            <img class="group-hover:hidden transition-opacity duration-300 opacity-100 group-hover:opacity-0"
-                                src="../public/icons/navigation/people.svg" alt="People Icon" />
-
-                            <p class="font-secondary capitalize">Pollinators</p>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <!-- USER MENU -->
-            <div
-                class="w-9 opacity-0 peer-checked:opacity-100 peer-checked:w-[calc(246px-32px)] transition-all duration-200 p-3 bg-[#EDF4F1] rounded-xl overflow-hidden">
-                <div class="flex justify-between transition-all">
-                    <div class="flex-shrink-0 flex items-center gap-2">
-                        <div class="size-10">
-                            <img src="/public/images/avatar.png" alt="Avatar">
-                        </div>
-                        <p class="capitalize text-sm font-medium">Carter Dorwart</p>
-                    </div>
-                    <button class="justify-end transition-all">
-                        <img src="./public/icons/button/more.svg" alt="More">
-                    </button>
+          <form class="space-y-6">
+            <div>
+              <label for="email" class="block text-base font-medium text-gray-700">Email</label>
+              <div class="mt-1 relative rounded-xl group">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <img src="./../public/icons/sms.svg" alt="Email icon" class="h-5 w-5 text-gray-400">
                 </div>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required
+                  class="block w-full pl-10 rounded-xl border border-gray-300 px-3 py-4 focus:shadow-md focus:border-accent focus:outline-none focus:ring-inset focus:ring-accent opacity-50 focus:opacity-100">
+              </div>
             </div>
-            <div
-                class="absolute  bottom-7 peer-checked:hidden block w-9 text-center cursor-pointer transition-all duration-500 rounded-full bg-accent-hover">
-                <p class="font-secondary text-primary text-lg">C</p>
+
+            <div>
+              <label for="password" class="block text-base font-medium text-gray-700">Password</label>
+              <div class="mt-1 relative rounded-xl">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <img src="./../public/icons/lock.svg" alt="Lock icon" class="h-5 w-5 text-gray-400">
+                </div>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required
+                  class="block w-full pl-10 rounded-xl border border-gray-300 px-3 py-4 focus:shadow-md focus:border-accent focus:outline-none focus:ring-inset focus:ring-accent opacity-50 focus:opacity-100">
+                <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+                  onclick="togglePassword()">
+                  <img src="./../public/icons/eye.svg" alt="Toggle password visibility" id="toggleIcon"
+                    class="h-5 w-5 text-gray-400">
+                </button>
+              </div>
             </div>
-        </aside>
 
-        <!-- CONTENT -->
-        <div class="flex-1 transition-all duration-300 lg:ml-6 peer-checked:ml-64 w-full">
+            <div class="flex items-center">
+              <a href="#" class="text-base text-primary-sub">Forgot password?</a>
+            </div>
 
-            <header>
-                <h1 class="lg:hidden uppercase font-primary text-mb_lg text-primary mb-4">COLLECTOR</h1>
-            </header>
+            <button type="submit"
+              class="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-full shadow-sm text-base font-medium text-white bg-accent  hover:bg-accent-dark">
+              Login
+            </button>
+          </form>
 
-            <section class="px-2 py-6 bg-white md:p-6 rounded-2xl">
-                <header>
-                    <h1 class="font-primary text-primary text-mb_lg md:text-lg">Submit Your Seeds</h1>
-                    <p class="font-secondary text-primary-sub text-sm md:text-base mt-2">Upload content or share a URL
-                        to
-                        add it to your library.</p>
-                </header>
-                <div class="h-6"></div>
-                <section aria-labelledby="search-section">
-                    <form action="">
-                        <div class="flex gap-[10px] px-3 py-4 rounded-xl shadow-inner-stroke shadow-[#F0F0F0]">
-                            <img src="./public/icons/link-2.svg" alt="Link Icon">
-                            <input
-                                class="w-full border-none placeholder-secondary outline-none font-secondary focus:text-primary-sub text-sm md:text-base"
-                                type="text" name="" placeholder="Past URL here" aria-label="Past URL here" required />
-                        </div>
-                        <div class="h-2"></div>
-                        <div>
-                            <div class="py-9 md:py-11 rounded-xl bg-[#F9F9F9] shadow-inner-stroke shadow-[#F0F0F0]">
-                                <img class="h-[112px] md:h-[142px] mx-auto" src="./public/images/files.png" alt="Files">
-                                <p class="font-secondary text-sm text-secondary text-center mt-4 md:mt-2">
-                                    Drop files here or
-                                    <span class="text-accent cursor-pointer hover:underline">browse</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="h-4"></div>
-                        <button
-                            class="w-full md:w-auto py-3 px-10 rounded-full bg-accent hover:bg-accent-dark font-secondary transition-all duration-150 ease-in-out font-medium text-sm md:text-base text-white"
-                            type="submit">
-                            Submit
-                        </button>
-                    </form>
-                </section>
-                <div class="h-[50px]"></div>
-                <section>
-                    <header>
-                        <h2 class="font-primary text-primary text-md">Recently Planted Seeds</h2>
-                    </header>
-                    <div class="h-4"></div>
-                    <ul class="w-full flex flex-col gap-2">
-
-                        <li
-                            class="flex flex-col gap-[10px] md:flex-row md:gap-0 justify-between p-2 md:pr-4 w-full shadow-inner-stroke shadow-[#F9F9F9] rounded-[10px]">
-                            <div class="flex items-center gap-4 w-full md:w-1/2">
-                                <div
-                                    class="flex items-center justify-center size-10 md:size-12 bg-accent-hover rounded-lg md:rounded-xl">
-                                    <img src="./public/icons/document-text.svg" alt="Document Text Icon">
-                                </div>
-                                <div class="font-secondary">
-                                    <p class="text-primary-sub text-sm">Book.pdf</p>
-                                    <p class="font-medium text-secondary text-xs">5 MB</p>
-                                </div>
-                            </div>
-
-                            <div class="flex justify-between md:justify-end gap-4 w-full md:w-1/2 md:gap-6">
-                                <div class="flex items-center gap-1 w-full max-w-sm">
-                                    <p class="font-secondary text-primary-sub text-xxs md:text-xs">48%</p>
-                                    <div class="w-full bg-[#39816647] rounded-full h-1 overflow-hidden">
-                                        <div class="bg-accent h-full rounded-full" style="width: 48%;"></div>
-                                    </div>
-                                </div>
-                                <button class="flex-shrink-0">
-                                    <div class="flex items-center gap-2 p-1 rounded-md hover:bg-background">
-                                        <img src="./public/icons/button/close-circle-active.svg" alt="Cancel Icon">
-                                        <p class="font-medium text-danger text-xs">Cancel</p>
-                                    </div>
-                                </button>
-                            </div>
-                        </li>
-
-                        <li
-                            class="flex flex-col gap-[10px] md:flex-row md:gap-0 justify-between p-2 md:pr-4 w-full shadow-inner-stroke shadow-[#F9F9F9] rounded-[10px]">
-                            <div class="flex items-center gap-4 w-full md:w-1/2">
-                                <div
-                                    class="flex items-center justify-center size-10 md:size-12 bg-accent-hover rounded-lg md:rounded-xl">
-                                    <img src="./public/icons/document-text.svg" alt="Document Text Icon">
-                                </div>
-                                <div class="font-secondary">
-                                    <p class="text-primary-sub text-sm">Book.pdf</p>
-                                    <p class="font-medium text-secondary text-xs">5 MB</p>
-                                </div>
-                            </div>
-
-                            <div class="flex justify-between md:justify-end gap-4 w-full md:w-1/2 md:gap-6">
-                                <div class="flex items-center gap-1 w-full max-w-sm">
-                                    <p class="font-secondary font-medium text-accent text-xxs md:text-xs md:ml-auto">
-                                        Submitted successfully!</p>
-                                </div>
-                                <button class="flex-shrink-0">
-                                    <div class="flex items-center gap-2 p-1 rounded-md hover:bg-background">
-                                        <img src="./public/icons/button/trash.svg" alt="Trash Icon">
-                                        <p class="font-medium text-danger text-xs">Delete</p>
-                                    </div>
-                                </button>
-                            </div>
-                        </li>
-
-                        <li
-                            class="flex flex-col gap-[10px] md:flex-row md:gap-0 justify-between p-2 md:pr-4 w-full shadow-inner-stroke shadow-[#F9F9F9] rounded-[10px]">
-                            <div class="flex items-center gap-4 w-full md:w-1/2">
-                                <div
-                                    class="flex items-center justify-center size-10 md:size-12 bg-background rounded-lg md:rounded-xl">
-                                    <img src="./public/icons/link.svg" alt="Link Icon">
-                                </div>
-                                <div class="font-secondary">
-                                    <p class="text-primary-sub text-sm">Medium.com/article</p>
-                                </div>
-                            </div>
-
-                            <div class="flex justify-between md:justify-end gap-4 w-full md:w-1/2 md:gap-6">
-                                <div class="flex items-center gap-1 w-full max-w-sm">
-                                    <p class="font-secondary font-medium text-accent text-xxs md:text-xs md:ml-auto">
-                                        Submitted successfully!</p>
-                                </div>
-                                <button class="flex-shrink-0">
-                                    <div class="flex items-center gap-2 p-1 rounded-md hover:bg-background">
-                                        <img src="./public/icons/button/trash.svg" alt="Trash Icon">
-                                        <p class="font-medium text-danger text-xs">Delete</p>
-                                    </div>
-                                </button>
-                            </div>
-                        </li>
-
-                        <li
-                            class="flex flex-col gap-[10px] md:flex-row md:gap-0 justify-between p-2 md:pr-4 w-full shadow-inner-stroke shadow-[#F9F9F9] rounded-[10px]">
-                            <div class="flex items-center gap-4 w-full md:w-1/2">
-                                <div
-                                    class="flex items-center justify-center size-10 md:size-12 bg-background rounded-lg md:rounded-xl">
-                                    <img src="./public/icons/link.svg" alt="Link Icon">
-                                </div>
-                                <div class="font-secondary">
-                                    <p class="text-primary-sub text-sm">Medium.com/article</p>
-                                </div>
-                            </div>
-
-                            <div class="flex justify-between md:justify-end gap-4 w-full md:w-1/2 md:gap-6">
-                                <div class="flex items-center gap-1 w-full max-w-sm">
-                                    <p class="font-secondary font-medium text-accent text-xxs md:text-xs md:ml-auto">
-                                        Submitted successfully!</p>
-                                </div>
-                                <button class="flex-shrink-0">
-                                    <div class="flex items-center gap-2 p-1 rounded-md hover:bg-background">
-                                        <img src="./public/icons/button/trash.svg" alt="Trash Icon">
-                                        <p class="font-medium text-danger text-xs">Delete</p>
-                                    </div>
-                                </button>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
-            </section>
+          <p class="mt-4 text-center text-base text-gray-600">
+            Don't have an account?
+            <a href="#" class="font-medium text-accent hover:text-accent-dark">Sign up</a>
+          </p>
         </div>
-    </main>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById('password');
+      const toggleIcon = document.getElementById('toggleIcon');
+
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.src = './../public/icons/eye-slash.svg' // Chemin vers l'icône œil barré
+      } else {
+        passwordInput.type = 'password';
+        toggleIcon.src = './../public/icons/eye.svg'; // Chemin vers l'icône œil
+      }
+    }
+  </script>
 </body>
+
 </html>

@@ -8,29 +8,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Days+One&family=Poppins:wght@400;500&display=swap"
     rel="stylesheet">
-  <link href="/dist/styles.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="../dist/styles.css" rel="stylesheet">
   <title>Login</title>
-  <!-- GENERAL STYLE -->
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      padding: 0;
-      margin: 0;
-    }
-
-    a {
-      cursor: pointer;
-    }
-
-    nav:has(.w-9) .avatar-section {
-      display: none;
-      /* Equivalent to Tailwind's `hidden` */
-    }
-  </style>
-
-
 </head>
 
 <body>
@@ -48,15 +28,16 @@
     <div class="w-full md:w-1/2 flex flex-col justify-between lg:p-16 sm:p-8 p-4 py-8 ">
       <!-- Logo -->
       <div class="flex justify-center md:justify-start">
-        <img src="./../public/icons/navigation/logo.svg" alt="Logo" class="w-[74px]">
+        <a href="/pages/collector.html"><img src="./../public/icons/navigation/logo.svg" alt="Logo" class="w-[74px]"></a>
       </div>
 
       <!-- Login Form -->
       <div class="flex-grow flex flex-col justify-center mx-auto w-full">
         <div class="space-y-6">
-          <div class="text-center">
+          <div class="text-center md:text-left space-y-4">
             <h1 class="text-4xl font-primary text-primary">Log in</h1>
-            <p class="mt-2 font-secondary text-sm md:text-base text-secondary">Welcome to your soil of ideas. Let’s grow
+            <p class="mt-2 font-secondary text-sm md:text-base text-primary-sub">Welcome to your soil of ideas. Let’s
+              grow
               something
               amazing.</p>
           </div>
@@ -64,12 +45,12 @@
           <form class="space-y-6">
             <div>
               <label for="email" class="block text-base font-medium text-gray-700">Email</label>
-              <div class="mt-1 relative rounded-xl">
+              <div class="mt-1 relative rounded-xl group">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <img src="./../public/icons/sms.svg" alt="Email icon" class="h-5 w-5 text-gray-400">
                 </div>
                 <input type="email" id="email" name="email" placeholder="Enter your email" required
-                  class="block w-full pl-10 rounded-xl border border-gray-300 px-3 py-4 focus:shadow-md focus:border-accent focus:outline-none focus:ring-inset focus:ring-accent">
+                  class="block w-full pl-10 rounded-xl border border-gray-300 px-3 py-4 focus:shadow-md focus:border-accent focus:outline-none focus:ring-inset focus:ring-accent opacity-50 focus:opacity-100">
               </div>
             </div>
 
@@ -80,7 +61,7 @@
                   <img src="./../public/icons/lock.svg" alt="Lock icon" class="h-5 w-5 text-gray-400">
                 </div>
                 <input type="password" id="password" name="password" placeholder="Enter your password" required
-                  class="block w-full pl-10 rounded-xl border border-gray-300 px-3 py-4 focus:shadow-md focus:border-accent focus:outline-none focus:ring-inset focus:ring-accent">
+                  class="block w-full pl-10 rounded-xl border border-gray-300 px-3 py-4 focus:shadow-md focus:border-accent focus:outline-none focus:ring-inset focus:ring-accent opacity-50 focus:opacity-100">
                 <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
                   onclick="togglePassword()">
                   <img src="./../public/icons/eye.svg" alt="Toggle password visibility" id="toggleIcon"
@@ -90,7 +71,7 @@
             </div>
 
             <div class="flex items-center">
-              <a href="#" class="text-base font-medium hover:text-indigo-500">Forgot password?</a>
+              <a href="#" class="text-base text-primary-sub">Forgot password?</a>
             </div>
 
             <button type="submit"

@@ -2,7 +2,7 @@
 module.exports = {
   content: [
     './*.html',
-    './src/**/*.{js,ts,jsx,tsx}' // Hi Sirwolf, if you use other extension like .erb, include here
+    './src/**/*.{js,ts,jsx,tsx}' // Hi Sirwolf,if you use other extension like .erb, include here
   ],
   theme: {
     screens: {
@@ -33,6 +33,7 @@ module.exports = {
         md: ['18px', '27px'],
         mb_lg: ['21px', '31.5px'],
         lg: ['24px', '36px'],
+        "4xl": ['42px', '63px'],
       },
       colors: {
         accent: {
